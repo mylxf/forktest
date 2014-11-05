@@ -10,3 +10,18 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+.idea
+eerigo.core/eerigo.core.iml
+eerigo.service.adapter/eerigo.service.adapter.iml
+eerigo.service.domain.core/eerigo.service.domain.core.iml
+eerigo.service.domain.domainservice/eerigo.service.domain.domainservice.iml
+eerigo.service.host/eerigo.service.host.iml
+eerigo.service.interface/eerigo.service.interface.iml
+eerigo.service.repositoryimpl/eerigo.service.repositoryimpl.iml
+eerigo.service.serviceimpl/eerigo.service.serviceimpl.iml
+eerigo.system.presentation.servicefacade/eerigo.system.presentation.servicefacade.iml
+eerigo.system.presentation.web/eerigo.system.presentation.web.iml
+eerigo.website.presentation.servicefacade/eerigo.website.presentation.servicefacade.iml
+eerigo.website.presentation.web/eerigo.website.presentation.web.iml
+eerigo.iml
