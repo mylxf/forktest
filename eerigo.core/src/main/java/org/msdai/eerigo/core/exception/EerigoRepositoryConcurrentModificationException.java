@@ -6,8 +6,8 @@ package org.msdai.eerigo.core.exception;
  * Date: 2014/11/10
  * Time: 22:37
  */
-public class RepositoryConcurrentModificationException extends EerigoException {
-    public RepositoryConcurrentModificationException(String message) {
+public class EerigoRepositoryConcurrentModificationException extends EerigoException {
+    public EerigoRepositoryConcurrentModificationException(String message) {
         super(message);
     }
 }

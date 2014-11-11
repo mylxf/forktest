@@ -1,13 +1,12 @@
 package org.msdai.eerigo.service.repositoryimpl;
 
 
+import org.msdai.eerigo.core.exception.EerigoRepositoryConcurrentModificationException;
 import org.msdai.eerigo.service.domain.core.AggregateRoot;
 import org.msdai.eerigo.service.domain.core.AggregateRootBase;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-
-import org.msdai.eerigo.core.exception.RepositoryConcurrentModificationException;
 
 import java.util.UUID;
 import java.util.List;
@@ -50,17 +49,17 @@ public class DefaultMongoDBRepositoryContext implements MongoDBRepositoryContext
     }
 
     @Override
-    public <TAggregateRoot extends AggregateRootBase> void registerNew(TAggregateRoot obj) throws RepositoryConcurrentModificationException {
+    public <TAggregateRoot extends AggregateRootBase> void registerNew(TAggregateRoot obj) throws EerigoRepositoryConcurrentModificationException {
         newThreadPreCheck();
         localNewCollection.get().add(obj);
         localCommitted.set(false);
     }
 
     @Override
-    public <TAggregateRoot extends AggregateRootBase> void registerModified(TAggregateRoot obj) throws RepositoryConcurrentModificationException {
+    public <TAggregateRoot extends AggregateRootBase> void registerModified(TAggregateRoot obj) throws EerigoRepositoryConcurrentModificationException {
         newThreadPreCheck();
         if (localDeletedCollection.get().contains(obj))
-            throw new RepositoryConcurrentModificationException("The object cannot be registered as a modified object since it was marked as deleted.");
+            throw new EerigoRepositoryConcurrentModificationException("The object cannot be registered as a modified object since it was marked as deleted.");
         if (!localModifiedCollection.get().contains(obj) && !localNewCollection.get().contains(obj)) {
             localModifiedCollection.get().add(obj);
             localCommitted.set(false);
@@ -68,7 +67,7 @@ public class DefaultMongoDBRepositoryContext implements MongoDBRepositoryContext
     }
 
     @Override
-    public <TAggregateRoot extends AggregateRootBase> void registerDeleted(TAggregateRoot obj) throws RepositoryConcurrentModificationException {
+    public <TAggregateRoot extends AggregateRootBase> void registerDeleted(TAggregateRoot obj) throws EerigoRepositoryConcurrentModificationException {
         newThreadPreCheck();
         if (localNewCollection.get().contains(obj)) {
             localNewCollection.get().remove(obj);
@@ -93,7 +92,7 @@ public class DefaultMongoDBRepositoryContext implements MongoDBRepositoryContext
     }
 
     @Override
-    public void commit() throws RepositoryConcurrentModificationException {
+    public void commit() throws EerigoRepositoryConcurrentModificationException {
         synchronized (syncObject) {
             for (AggregateRootBase newObject : localNewCollection.get()) {
                 mongoOperations.insert(newObject);
@@ -106,7 +105,7 @@ public class DefaultMongoDBRepositoryContext implements MongoDBRepositoryContext
                     modifiedObject.updateSeq();
                     mongoOperations.save(modifiedObject);
                 } else {
-                    throw new RepositoryConcurrentModificationException("this transaction can't be commit , object modified by other thread");
+                    throw new EerigoRepositoryConcurrentModificationException("this transaction can't be commit , object modified by other thread");
                 }
             }
 
@@ -114,7 +113,7 @@ public class DefaultMongoDBRepositoryContext implements MongoDBRepositoryContext
                 Query query = new Query(Criteria.where("_id").is(deletedObject.getId()).andOperator(Criteria.where("seq").is(deletedObject.getSeq())));
                 AggregateRoot aggregateRoot = mongoOperations.findAndRemove(query, deletedObject.getClass());
                 if (aggregateRoot == null) {
-                    throw new RepositoryConcurrentModificationException("this transaction can't be commit , object modified by other thread");
+                    throw new EerigoRepositoryConcurrentModificationException("this transaction can't be commit , object modified by other thread");
                 }
             }
             clearRegistrations();

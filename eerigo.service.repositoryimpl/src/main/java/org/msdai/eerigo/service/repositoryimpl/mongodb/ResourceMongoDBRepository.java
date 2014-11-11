@@ -1,12 +1,12 @@
 package org.msdai.eerigo.service.repositoryimpl.mongodb;
 
+import org.msdai.eerigo.core.exception.EerigoRepositoryConcurrentModificationException;
 import org.msdai.eerigo.service.domain.core.RepositoryContext;
 
 import org.msdai.eerigo.service.domain.model.Resource;
 
 import org.msdai.eerigo.service.domain.repository.ResourceRepository;
 
-import org.msdai.eerigo.core.exception.RepositoryConcurrentModificationException;
 import org.springframework.data.mongodb.gridfs.GridFsOperations;
 
 import java.io.ByteArrayInputStream;
@@ -36,7 +36,7 @@ public class ResourceMongoDBRepository implements ResourceRepository {
     }
 
     @Override
-    public void add(Resource item) throws RepositoryConcurrentModificationException {
+    public void add(Resource item) throws EerigoRepositoryConcurrentModificationException {
         InputStream inputStream = new ByteArrayInputStream(item.getResourceContent());
         String fileName = UUID.randomUUID().toString();
         fsOperations.store(inputStream, fileName);
@@ -44,12 +44,12 @@ public class ResourceMongoDBRepository implements ResourceRepository {
     }
 
     @Override
-    public void remove(Resource item) throws RepositoryConcurrentModificationException {
+    public void remove(Resource item) throws EerigoRepositoryConcurrentModificationException {
 
     }
 
     @Override
-    public void update(Resource item) throws RepositoryConcurrentModificationException {
+    public void update(Resource item) throws EerigoRepositoryConcurrentModificationException {
 
     }
 

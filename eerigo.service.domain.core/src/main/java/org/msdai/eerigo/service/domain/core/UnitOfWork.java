@@ -1,6 +1,6 @@
 package org.msdai.eerigo.service.domain.core;
 
-import org.msdai.eerigo.core.exception.RepositoryConcurrentModificationException;
+import org.msdai.eerigo.core.exception.EerigoRepositoryConcurrentModificationException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,7 +18,7 @@ public interface UnitOfWork {
     /**
      * 事务提交
      */
-    void commit() throws RepositoryConcurrentModificationException;
+    void commit() throws EerigoRepositoryConcurrentModificationException;
 
     /**
      * 事务回滚

@@ -1,6 +1,6 @@
 package org.msdai.eerigo.service.domain.core;
 
-import org.msdai.eerigo.core.exception.RepositoryConcurrentModificationException;
+import org.msdai.eerigo.core.exception.EerigoRepositoryConcurrentModificationException;
 
 import java.util.List;
 
@@ -21,17 +21,17 @@ public interface Repository<TEntity extends AggregateRoot> {
     /**
      * 添加实体
      */
-    void add(TEntity item) throws RepositoryConcurrentModificationException;
+    void add(TEntity item) throws EerigoRepositoryConcurrentModificationException;
 
     /**
      * 删除实体
      */
-    void remove(TEntity item) throws RepositoryConcurrentModificationException;
+    void remove(TEntity item) throws EerigoRepositoryConcurrentModificationException;
 
     /**
      * 更新实体
      */
-    void update(TEntity item) throws RepositoryConcurrentModificationException;
+    void update(TEntity item) throws EerigoRepositoryConcurrentModificationException;
 
     /**
      * 根据实体唯一标识获取实体

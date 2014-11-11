@@ -1,6 +1,6 @@
 package org.msdai.eerigo.service.domain.core;
 
-import org.msdai.eerigo.core.exception.RepositoryConcurrentModificationException;
+import org.msdai.eerigo.core.exception.EerigoRepositoryConcurrentModificationException;
 
 import java.util.UUID;
 
@@ -20,15 +20,15 @@ public interface RepositoryContext extends UnitOfWork {
     /**
      * 将指定的聚合根标注为“New”状态，供Commit
      * */
-    <TAggregateRoot extends AggregateRootBase> void registerNew(TAggregateRoot obj) throws RepositoryConcurrentModificationException;
+    <TAggregateRoot extends AggregateRootBase> void registerNew(TAggregateRoot obj) throws EerigoRepositoryConcurrentModificationException;
 
     /**
      * 将指定的聚合根标注为“Modified”状态，供Commit
      * */
-    <TAggregateRoot extends AggregateRootBase> void registerModified(TAggregateRoot obj) throws RepositoryConcurrentModificationException;
+    <TAggregateRoot extends AggregateRootBase> void registerModified(TAggregateRoot obj) throws EerigoRepositoryConcurrentModificationException;
 
     /**
      * 将指定的聚合根标注为“Deleted”状态，供Commit
      * */
-    <TAggregateRoot extends AggregateRootBase> void registerDeleted(TAggregateRoot obj) throws RepositoryConcurrentModificationException;
+    <TAggregateRoot extends AggregateRootBase> void registerDeleted(TAggregateRoot obj) throws EerigoRepositoryConcurrentModificationException;
 }

@@ -1,6 +1,6 @@
 package org.msdai.eerigo.service.repositoryimpl;
 
-import org.msdai.eerigo.core.exception.RepositoryConcurrentModificationException;
+import org.msdai.eerigo.core.exception.EerigoRepositoryConcurrentModificationException;
 import org.msdai.eerigo.service.domain.core.AggregateRootBase;
 import org.msdai.eerigo.service.domain.core.Repository;
 import org.msdai.eerigo.service.domain.core.RepositoryContext;
@@ -29,17 +29,17 @@ public abstract class MongoDBRepository<TAggregateRoot extends AggregateRootBase
     }
 
     @Override
-    public void add(TAggregateRoot item) throws RepositoryConcurrentModificationException {
+    public void add(TAggregateRoot item) throws EerigoRepositoryConcurrentModificationException {
         mongoDBRepositoryContext.registerNew(item);
     }
 
     @Override
-    public void remove(TAggregateRoot item) throws RepositoryConcurrentModificationException {
+    public void remove(TAggregateRoot item) throws EerigoRepositoryConcurrentModificationException {
         mongoDBRepositoryContext.registerDeleted(item);
     }
 
     @Override
-    public void update(TAggregateRoot item) throws RepositoryConcurrentModificationException {
+    public void update(TAggregateRoot item) throws EerigoRepositoryConcurrentModificationException {
         mongoDBRepositoryContext.registerModified(item);
     }
 }
