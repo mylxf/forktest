@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xmlns:cxf="http://cxf.apache.org/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://cxf.apache.org/jaxrs
+       http://cxf.apache.org/schemas/jaxrs.xsd http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
+
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+
+    <cxf:bus>
+        <cxf:inInterceptors>
+            <ref bean="authInterceptor"/>
+        </cxf:inInterceptors>
+        <cxf:outFaultInterceptors>
+            <ref bean="exceptionInterceptor"/>
+        </cxf:outFaultInterceptors>
+    </cxf:bus>
+
+    <jaxrs:server id="category" address="/category">
+        <jaxrs:serviceBeans>
+            <ref bean="categoryService"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jaxbProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+
+    <bean id="categoryService" class="org.msdai.eerigo.service.serviceimpl.action.CategoryServiceImpl">
+        <property name="categoryDomainService" ref="categoryDomainService"/>
+        <property name="productDomainService" ref="productDomainService"/>
+    </bean>
+
+    <bean id="jaxbProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+</beans>

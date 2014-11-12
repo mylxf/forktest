@@ -29,12 +29,12 @@ public abstract class MongoDBRepository<TAggregateRoot extends AggregateRootBase
     }
 
     @Override
-    public void add(TAggregateRoot item) throws EerigoRepositoryConcurrentModificationException {
+    public void insert(TAggregateRoot item) throws EerigoRepositoryConcurrentModificationException {
         mongoDBRepositoryContext.registerNew(item);
     }
 
     @Override
-    public void remove(TAggregateRoot item) throws EerigoRepositoryConcurrentModificationException {
+    public void delete(TAggregateRoot item) throws EerigoRepositoryConcurrentModificationException {
         mongoDBRepositoryContext.registerDeleted(item);
     }
 

@@ -36,7 +36,7 @@ public class ResourceMongoDBRepository implements ResourceRepository {
     }
 
     @Override
-    public void add(Resource item) throws EerigoRepositoryConcurrentModificationException {
+    public void insert(Resource item) throws EerigoRepositoryConcurrentModificationException {
         InputStream inputStream = new ByteArrayInputStream(item.getResourceContent());
         String fileName = UUID.randomUUID().toString();
         fsOperations.store(inputStream, fileName);
@@ -44,7 +44,7 @@ public class ResourceMongoDBRepository implements ResourceRepository {
     }
 
     @Override
-    public void remove(Resource item) throws EerigoRepositoryConcurrentModificationException {
+    public void delete(Resource item) throws EerigoRepositoryConcurrentModificationException {
 
     }
 

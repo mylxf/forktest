@@ -21,12 +21,12 @@ public interface Repository<TEntity extends AggregateRoot> {
     /**
      * 添加实体
      */
-    void add(TEntity item) throws EerigoRepositoryConcurrentModificationException;
+    void insert(TEntity item) throws EerigoRepositoryConcurrentModificationException;
 
     /**
      * 删除实体
      */
-    void remove(TEntity item) throws EerigoRepositoryConcurrentModificationException;
+    void delete(TEntity item) throws EerigoRepositoryConcurrentModificationException;
 
     /**
      * 更新实体
