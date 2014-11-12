@@ -1,5 +1,6 @@
 package org.msdai.eerigo.service.domain.domainservice;
 
+import org.msdai.eerigo.core.exception.EerigoRepositoryConcurrentModificationException;
 import org.msdai.eerigo.service.domain.model.category.Category;
 import org.msdai.eerigo.service.domain.model.product.Product;
 import org.msdai.eerigo.service.domain.repository.ProductRepository;
@@ -21,5 +22,46 @@ public class ProductDomainService {
 
     public boolean existProducts(Category category) {
         return false;
+    }
+
+    public Product getProduct(String id) {
+        return productRepository.find(id);
+    }
+
+    public List<Product> getProducts() {
+        return productRepository.findAll();
+    }
+
+    public boolean addCountry(Product product){
+        try {
+            productRepository.insert(product);
+            productRepository.getContext().commit();
+            return true;
+        } catch (EerigoRepositoryConcurrentModificationException e) {
+            productRepository.getContext().rollback();
+            return false;
+        }
+    }
+
+    public boolean modifyCountry(Product product) {
+        try {
+            productRepository.update(product);
+            productRepository.getContext().commit();
+            return true;
+        } catch (EerigoRepositoryConcurrentModificationException e) {
+            productRepository.getContext().rollback();
+            return false;
+        }
+    }
+
+    public boolean removeBrand(Product product) {
+        try {
+            productRepository.delete(product);
+            productRepository.getContext().commit();
+            return true;
+        } catch (EerigoRepositoryConcurrentModificationException e) {
+            productRepository.getContext().rollback();
+            return false;
+        }
     }
 }

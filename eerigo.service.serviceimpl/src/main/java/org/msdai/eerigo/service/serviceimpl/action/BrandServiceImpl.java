@@ -1,0 +1,64 @@
+package org.msdai.eerigo.service.serviceimpl.action;
+
+import org.msdai.eerigo.core.utils.ConvertUtils;
+import org.msdai.eerigo.service.domain.domainservice.BrandDomainService;
+import org.msdai.eerigo.service.domain.domainservice.ProductDomainService;
+import org.msdai.eerigo.service.domain.model.brand.Brand;
+import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
+import org.msdai.eerigo.service.serviceinterface.servicecontract.action.BrandService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by fengfeng on 14/11/12.
+ */
+public class BrandServiceImpl implements BrandService {
+
+    private BrandDomainService brandDomainService;
+    private ProductDomainService productDomainService;
+
+    public void setBrandDomainService(BrandDomainService brandDomainService) {
+        this.brandDomainService = brandDomainService;
+    }
+
+    public void setProductDomainService(ProductDomainService productDomainService) {
+        this.productDomainService = productDomainService;
+    }
+
+    @Override
+    public void addBrand(BrandDTO brandDTO) {
+        Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
+        brandDomainService.addBrand(brand);
+    }
+
+    @Override
+    public void modifyBrand(BrandDTO brandDTO) {
+        Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
+        brandDomainService.modifyBrand(brand);
+    }
+
+    @Override
+    public void removeBrand(BrandDTO brandDTO) {
+        Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
+
+    }
+
+    @Override
+    public BrandDTO getBrand(String id) {
+        Brand brand = brandDomainService.getBrand(id);
+
+        return (brand!=null) ? ConvertUtils.convert(brand, BrandDTO.class) : null;
+    }
+
+    @Override
+    public List<BrandDTO> getBrands() {
+        List<BrandDTO> result = new ArrayList<BrandDTO>();
+        List<Brand> list = brandDomainService.getBrands();
+        for(Brand brand : list){
+            result.add(ConvertUtils.convert(brand, BrandDTO.class));
+        }
+
+        return result;
+    }
+}
