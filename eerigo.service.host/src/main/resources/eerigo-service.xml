@@ -12,10 +12,10 @@
 
     <cxf:bus>
         <cxf:inInterceptors>
-            <ref bean="authInterceptor"/>
+            <ref bean="requestInterceptor"/>
         </cxf:inInterceptors>
         <cxf:outFaultInterceptors>
-            <ref bean="exceptionInterceptor"/>
+            <ref bean="responseInterceptor"/>
         </cxf:outFaultInterceptors>
     </cxf:bus>
 
@@ -32,6 +32,9 @@
         <property name="categoryDomainService" ref="categoryDomainService"/>
         <property name="productDomainService" ref="productDomainService"/>
     </bean>
+
+    <bean id="requestInterceptor" class="org.msdai.eerigo.core.service.ServiceRequestInterceptor"/>
+    <bean id="responseInterceptor" class="org.msdai.eerigo.core.service.ServiceResponseInterceptor"/>
 
     <bean id="jaxbProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
 </beans>

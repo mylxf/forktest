@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<constant name="struts.devMode" value="true"/>
+<constant name="struts.multipart.maxSize" value="1048576000"/>
+<package name="default" extends="struts-default">
+    <!-- 定义一个拦截器 -->
+    <interceptors>
+        <interceptor name="authority"  class="org.ccic.zeus.presentation.web.web.LoginInterceptor">
+        </interceptor>
+        <!-- 拦截器栈 -->
+        <interceptor-stack name="loginInterceptor">
+            <interceptor-ref name="defaultStack" />
+            <interceptor-ref name="authority" />
+        </interceptor-stack>
+    </interceptors>
+    <!-- 共有页面 -->
+    <global-results>
+        <result name="showAlert">/page/common/showAlert.jsp</result>
+        <result name="login">/logon.jsp</result>
+        <result name="404">/404.jsp</result>
+    </global-results>
+    <action name="logon" class="org.ccic.zeus.presentation.web.action.LogonAction" >
+        <result name="success">/success.jsp</result>
+    </action>
+    <action name="main" class="org.ccic.zeus.presentation.web.action.MainAction" >
+        <result name="index">/page/index/index.jsp</result>
+    </action>
+    <action name="requirement" class="org.ccic.zeus.presentation.web.action.RequirementAction" >
+    	<result name="index">/page/demand/requirement_index.jsp</result>
+        <result name="downLoad" type="stream">
+            <param name="inputName">inputStream</param>
+            <param name="contentDisposition">
+                attachment;filename="${downloadFileName}"
+            </param>
+        </result>
+        <result name="to_backUp">/page/demand/attachment.jsp</result>
+        <interceptor-ref name="loginInterceptor" />
+    </action>
+</package>
+</struts>
