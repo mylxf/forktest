@@ -11,7 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by fengfeng on 14/11/12.
+ * Created with IntelliJ IDEA.
+ * User: 田文涛
+ * Date: 14/11/12
+ * Time: 2:09 PM
  */
 public class BrandServiceImpl implements BrandService {
 
@@ -48,17 +51,16 @@ public class BrandServiceImpl implements BrandService {
     public BrandDTO getBrand(String id) {
         Brand brand = brandDomainService.getBrand(id);
 
-        return (brand!=null) ? ConvertUtils.convert(brand, BrandDTO.class) : null;
+        return (brand != null) ? ConvertUtils.convert(brand, BrandDTO.class) : null;
     }
 
     @Override
     public List<BrandDTO> getBrands() {
         List<BrandDTO> result = new ArrayList<BrandDTO>();
         List<Brand> list = brandDomainService.getBrands();
-        for(Brand brand : list){
+        for (Brand brand : list) {
             result.add(ConvertUtils.convert(brand, BrandDTO.class));
         }
-
         return result;
     }
 }
