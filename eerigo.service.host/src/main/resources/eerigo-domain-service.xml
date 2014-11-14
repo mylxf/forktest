@@ -13,5 +13,4 @@
     <bean id="productDomainService" class="org.msdai.eerigo.service.domain.domainservice.ProductDomainService">
         <constructor-arg ref="productRepository"/>
     </bean>
-
 </beans>

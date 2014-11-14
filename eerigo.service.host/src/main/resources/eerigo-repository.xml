@@ -16,4 +16,12 @@
     <bean id="resourceRepository" class="org.msdai.eerigo.service.repositoryimpl.mongodb.ResourceMongoDBRepository">
         <property name="fsOperations" ref="gridTemplate"/>
     </bean>
+
+
+    <bean id="brandQueryRepository"
+          class="org.msdai.eerigo.service.repositoryimpl.mongodb.query.BrandQueryMongoDBRepository">
+        <constructor-arg index="0" value="${mongo.host}"/>
+        <constructor-arg index="1" value="${mongo.port}"/>
+        <constructor-arg index="2" value="${mongo.database}"/>
+    </bean>
 </beans>

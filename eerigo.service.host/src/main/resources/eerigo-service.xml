@@ -27,10 +27,27 @@
             <ref bean="jaxbProvider"/>
         </jaxrs:providers>
     </jaxrs:server>
+    <jaxrs:server id="brandQuery" address="/brandQuery">
+        <jaxrs:serviceBeans>
+            <ref bean="brandQueryService"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jaxbProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
 
     <bean id="categoryService" class="org.msdai.eerigo.service.serviceimpl.action.CategoryServiceImpl">
         <property name="categoryDomainService" ref="categoryDomainService"/>
         <property name="productDomainService" ref="productDomainService"/>
+    </bean>
+
+    <bean id="brandService" class="org.msdai.eerigo.service.serviceimpl.action.BrandServiceImpl">
+        <property name="brandDomainService" ref="brandDomainService"/>
+        <property name="productDomainService" ref="productDomainService"/>
+    </bean>
+
+    <bean id="brandQueryService" class="org.msdai.eerigo.service.serviceimpl.query.BrandQueryServiceImpl">
+        <constructor-arg ref="brandQueryRepository"/>
     </bean>
 
     <bean id="requestInterceptor" class="org.msdai.eerigo.core.service.ServiceRequestInterceptor"/>

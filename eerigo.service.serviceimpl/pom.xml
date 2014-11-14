@@ -33,6 +33,12 @@
         </dependency>
         <dependency>
             <groupId>eerigo</groupId>
+            <artifactId>eerigo.service.query.repository</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>eerigo</groupId>
             <artifactId>eerigo.service.adapter</artifactId>
             <version>1.0</version>
             <scope>compile</scope>

@@ -1,9 +1,10 @@
 package org.msdai.eerigo.service.domain.domainservice;
 
+import org.msdai.eerigo.service.domain.model.brand.Brand;
+
+import org.msdai.eerigo.service.domain.repository.BrandRepository;
 
 import org.msdai.eerigo.core.exception.EerigoRepositoryConcurrentModificationException;
-import org.msdai.eerigo.service.domain.model.brand.Brand;
-import org.msdai.eerigo.service.domain.repository.BrandRepository;
 
 import java.util.List;
 

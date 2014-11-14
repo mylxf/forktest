@@ -16,6 +16,7 @@
         <module>eerigo.service.domain.domainservice</module>
         <module>eerigo.service.host</module>
         <module>eerigo.service.adapter</module>
+        <module>eerigo.service.query.repository</module>
         <module>eerigo.service.repositoryimpl</module>
         <module>eerigo.system.presentation.servicefacade</module>
         <module>eerigo.system.presentation.web</module>

@@ -1,4 +1,4 @@
-package org.msdai.eerigo.service.domain.core;
+package org.msdai.eerigo.core;
 
 import java.util.ArrayList;
 import java.util.Collection;

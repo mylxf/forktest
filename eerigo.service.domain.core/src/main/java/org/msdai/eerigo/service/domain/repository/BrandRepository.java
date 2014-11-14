@@ -10,4 +10,5 @@ import org.msdai.eerigo.service.domain.model.brand.Brand;
  * Time: 22:41
  */
 public interface BrandRepository extends Repository<Brand> {
+
 }

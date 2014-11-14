@@ -6,6 +6,7 @@ import org.msdai.eerigo.service.domain.repository.BrandRepository;
 
 import org.msdai.eerigo.service.repositoryimpl.MongoDBRepository;
 import org.msdai.eerigo.service.repositoryimpl.MongoDBRepositoryContext;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.List;
 
@@ -22,16 +23,16 @@ public class BrandMongoDBRepository extends MongoDBRepository<Brand> implements 
 
     @Override
     public Brand find(String id) {
-        return null;
+        return this.getMongoDBRepositoryContext().getDB().findById(id, Brand.class);
     }
 
     @Override
     public int count() {
-        return 0;
+        return Long.valueOf(this.getMongoDBRepositoryContext().getDB().count(new Query(), Brand.class)).intValue();
     }
 
     @Override
     public List<Brand> findAll() {
-        return null;
+        return this.getMongoDBRepositoryContext().getDB().findAll(Brand.class);
     }
 }

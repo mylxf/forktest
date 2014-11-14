@@ -7,8 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<link href="/css/bootstrap.css" rel="stylesheet">
-<link href="/css/global.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/global.css" rel="stylesheet">
 <script src="/js/jquery.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/global.js"></script>
