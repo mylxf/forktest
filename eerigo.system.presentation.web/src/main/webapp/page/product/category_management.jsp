@@ -1,28 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: fengfeng
-  Date: 14/11/8
-  Time: 16:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>用户管理</title>
+    <title>类别管理</title>
 </head>
 <body>
 <jsp:include page="/page/header.jsp"/>
 
 <div class="container bs-docs-container">
-    <div class="row">
-        <div class="col-md-12">
-            <ol class="breadcrumb">
-                <li><a href="#">首页</a></li>
-                <li class="active">用户管理</li>
-            </ol>
-        </div>
-    </div>
-
     <div class="row">
         <jsp:include page="/page/menu.jsp"/>
         <div class="col-md-9">

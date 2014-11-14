@@ -24,12 +24,30 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="../" class="navbar-brand">Eerigo</a>
+            <a href="#" class="navbar-brand">EERIGO</a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="/index.jsp">首页</a>
+                    <a href="${pageContext.request.contextPath}/index.jsp">首页</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/index.jsp">网站管理</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/page/product/product_management.jsp">商品管理</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/index.jsp">订单管理</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/index.jsp">客户管理</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/index.jsp">财务管理</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/index.jsp">系统管理</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
