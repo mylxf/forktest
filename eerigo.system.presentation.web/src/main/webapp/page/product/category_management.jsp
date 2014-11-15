@@ -9,7 +9,7 @@
 
 <div class="container bs-docs-container">
     <div class="row">
-        <jsp:include page="/page/menu.jsp"/>
+        <jsp:include page="/page/product/product_menu.jsp"/>
         <div class="col-md-9">
             <!--正文-->
             <div class="bar-mod clearfix tl">

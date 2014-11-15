@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>商品管理</title>
+    <title>菜单管理</title>
 </head>
 <body>
 <jsp:include page="/page/header.jsp"/>
