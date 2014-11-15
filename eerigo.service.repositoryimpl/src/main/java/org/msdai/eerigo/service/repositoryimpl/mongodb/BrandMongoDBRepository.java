@@ -50,8 +50,9 @@ public class BrandMongoDBRepository extends MongoDBRepository<Brand> implements 
     public void update(Brand brand) {
         this.getMongoDBRepositoryContext().getDB().upsert(
                 new Query(Criteria.where("id").is(brand.getId())),
-                new Update().addToSet("brandname", brand.getBrandName())
-                        .addToSet("brandLogo", null),
+                new Update()
+                        .addToSet("brandname", brand.getBrandName())
+                        .addToSet("brandlogo", null),
                 BrandCollection
         );
     }
