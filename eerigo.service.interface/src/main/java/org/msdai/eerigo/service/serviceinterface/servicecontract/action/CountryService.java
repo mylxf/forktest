@@ -25,7 +25,11 @@ public interface CountryService {
 
     @POST
     @Path("/removeCountry")
-    void removeCountry(CountryDTO countryDTO);
+    void removeCountry(String countryId);
+
+    @POST
+    @Path("/batchRemoveCountry")
+    void batchRemoveCountry(List<String> list);
 
     @POST
     @Path("/getCountry")

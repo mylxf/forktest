@@ -29,7 +29,11 @@ public interface CategoryService {
 
     @POST
     @Path("/removeCategory")
-    void removeCategory(CategoryDTO categoryDTO);
+    void removeCategory(String categoryId);
+
+    @POST
+    @Path("/batchRemoveCategory")
+    void batchRemoveCategory(List<String> list);
 
     @POST
     @Path("/getCategory")

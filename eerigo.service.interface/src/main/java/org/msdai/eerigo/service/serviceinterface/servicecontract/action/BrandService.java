@@ -29,7 +29,11 @@ public interface BrandService {
 
     @POST
     @Path("/removeBrand")
-    void removeBrand(BrandDTO brandDTO);
+    void removeBrand(String brandId);
+
+    @POST
+    @Path("/batchRemoveBrand")
+    void batchRemoveBrand(List<String> list);
 
     @POST
     @Path("/getBrand")

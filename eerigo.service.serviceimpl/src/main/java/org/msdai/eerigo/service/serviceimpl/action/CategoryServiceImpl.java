@@ -45,11 +45,16 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void removeCategory(CategoryDTO categoryDTO) {
-        Category category = ConvertUtils.convert(categoryDTO,Category.class);
+    public void removeCategory(String categoryId) {
+        CategoryDTO categoryDTO = getCategory(categoryId);
         //检查该类别下属是否有其他类别，或者有父类别
-        if (productDomainService.existProducts(category)) {
 
+    }
+
+    @Override
+    public void batchRemoveCategory(List<String> list){
+        for(String id : list){
+            removeCategory(id);
         }
     }
 

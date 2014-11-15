@@ -39,9 +39,17 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public void removeCountry(CountryDTO countryDTO) {
-        Country country = ConvertUtils.convert(countryDTO, Country.class);
-        countryDomainService.removeBrand(country);
+    public void removeCountry(String countryId) {
+        CountryDTO countryDTO = getCountry(countryId);
+        //Country country = ConvertUtils.convert(countryDTO, Country.class);
+        //countryDomainService.removeBrand(country);
+    }
+
+    @Override
+    public void batchRemoveCountry(List<String> list){
+        for(String id : list){
+            removeCountry(id);
+        }
     }
 
     @Override

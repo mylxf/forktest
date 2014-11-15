@@ -42,9 +42,15 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public void removeBrand(BrandDTO brandDTO) {
-        Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
+    public void removeBrand(String brandId) {
+        BrandDTO brandDTO = getBrand(brandId);
+    }
 
+    @Override
+    public void batchRemoveBrand(List<String> list) {
+        for (String id : list) {
+            removeBrand(id);
+        }
     }
 
     @Override

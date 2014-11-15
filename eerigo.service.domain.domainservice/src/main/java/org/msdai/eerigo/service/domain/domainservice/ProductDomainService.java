@@ -32,7 +32,7 @@ public class ProductDomainService {
         return productRepository.findAll();
     }
 
-    public boolean addCountry(Product product){
+    public boolean addProduct(Product product){
         try {
             productRepository.insert(product);
             productRepository.getContext().commit();
@@ -43,7 +43,7 @@ public class ProductDomainService {
         }
     }
 
-    public boolean modifyCountry(Product product) {
+    public boolean modifyCProduct(Product product) {
         try {
             productRepository.update(product);
             productRepository.getContext().commit();
@@ -54,7 +54,7 @@ public class ProductDomainService {
         }
     }
 
-    public boolean removeBrand(Product product) {
+    public boolean removeProduct(Product product) {
         try {
             productRepository.delete(product);
             productRepository.getContext().commit();
