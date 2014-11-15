@@ -3,7 +3,7 @@ package org.msdai.eerigo.system.web.action;
 import org.msdai.eerigo.core.BasePageAction;
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
 import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
-import org.msdai.eerigo.system.servicefacade.action.BrandServiceFacade;
+import org.msdai.eerigo.system.servicefacade.query.BrandQueryServiceFacade;
 import org.msdai.eerigo.system.web.model.BrandModel;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class BrandManageAction extends BasePageAction {
 
-    private BrandServiceFacade brandServiceFacade = new BrandServiceFacade();
+    private BrandQueryServiceFacade brandQueryServiceFacade = new BrandQueryServiceFacade();
 
     private List<BrandModel> models;
 
@@ -26,8 +26,9 @@ public class BrandManageAction extends BasePageAction {
 
     @Override
     public String doExecute() throws Exception {
-        PageResultDTO<BrandDTO> result = brandServiceFacade.queryBrands(0, 20);
+        PageResultDTO<List<BrandDTO>> result = brandQueryServiceFacade.queryBrands(0, 20);
+
         //transfer
-        return "index";
+        return SUCCESS;
     }
 }

@@ -19,7 +19,7 @@
         </cxf:outFaultInterceptors>
     </cxf:bus>
 
-    <jaxrs:server id="category" address="/category">
+    <jaxrs:server id="category" address="/category/">
         <jaxrs:serviceBeans>
             <ref bean="categoryService"/>
         </jaxrs:serviceBeans>

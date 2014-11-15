@@ -31,7 +31,7 @@ public class RestClient {
 
     public RestClient(String servicePath) {
         this.servicePath = servicePath;
-        //this.userName = CacheUtils.getCookie(CacheUtils.USER_ID);
+        this.userName = "Shinspirit";
     }
 
     private String userName;

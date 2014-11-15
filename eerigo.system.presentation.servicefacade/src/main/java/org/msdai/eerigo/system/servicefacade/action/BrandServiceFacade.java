@@ -16,11 +16,5 @@ import org.msdai.eerigo.core.exception.EerigoRestClientException;
  * Time: 0:51
  */
 public class BrandServiceFacade {
-    public PageResultDTO<BrandDTO> queryBrands(Integer index, Integer size) throws EerigoRestClientException {
-        RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/brand");
-        BrandQueryRequestMessage request = new BrandQueryRequestMessage();
-        request.setIndex(index);
-        request.setSize(size);
-        return restClient.post("/queryBrands", request, PageResultDTO.class);
-    }
+
 }

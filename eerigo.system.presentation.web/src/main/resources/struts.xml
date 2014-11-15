@@ -4,25 +4,9 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <constant name="struts.devMode" value="true"/>
-    <constant name="struts.multipart.maxSize" value="1048576000"/>
     <package name="default" extends="struts-default">
         <action name="brand_management" class="org.msdai.eerigo.system.web.action.BrandManageAction">
-            <result name="index">/page/product/brand_management.jsp</result>
-            <result name="add">/page/product/brand_save.jsp</result>
-        </action>
-        <action name="main" class="org.ccic.zeus.presentation.web.action.MainAction">
-            <result name="index">/page/index/index.jsp</result>
-        </action>
-        <action name="requirement" class="org.ccic.zeus.presentation.web.action.RequirementAction">
-            <result name="index">/page/demand/requirement_index.jsp</result>
-            <result name="downLoad" type="stream">
-                <param name="inputName">inputStream</param>
-                <param name="contentDisposition">
-                    attachment;filename="${downloadFileName}"
-                </param>
-            </result>
-            <result name="to_backUp">/page/demand/attachment.jsp</result>
-            <interceptor-ref name="loginInterceptor"/>
+            <result name="success">/page/product/brand_management.jsp</result>
         </action>
     </package>
 </struts>
