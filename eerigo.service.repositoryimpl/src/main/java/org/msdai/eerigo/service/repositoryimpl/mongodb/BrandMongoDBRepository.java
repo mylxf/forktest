@@ -1,15 +1,16 @@
 package org.msdai.eerigo.service.repositoryimpl.mongodb;
 
-import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+import com.mongodb.WriteConcern;
 import org.msdai.eerigo.service.domain.model.brand.Brand;
-
 import org.msdai.eerigo.service.domain.repository.BrandRepository;
-
 import org.msdai.eerigo.service.repositoryimpl.MongoDBRepository;
 import org.msdai.eerigo.service.repositoryimpl.MongoDBRepositoryContext;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -20,8 +21,6 @@ import java.util.List;
  */
 public class BrandMongoDBRepository extends MongoDBRepository<Brand> implements BrandRepository {
     private static final String BrandCollection = "brand";
-
-    DBCollection brandCollection;
 
     public BrandMongoDBRepository(MongoDBRepositoryContext mongoDBRepositoryContext) {
         super(mongoDBRepositoryContext);
@@ -43,38 +42,22 @@ public class BrandMongoDBRepository extends MongoDBRepository<Brand> implements 
     }
 
     @Override
-    public void insert(Brand brand){
-        DBObject query = new BasicDBObject();
-        query.put("id", brand.getId());
-        DBCursor proxyCursor = brandCollection.find(query);
-
-        if(!proxyCursor.hasNext()){
-            BasicDBObject dbObject = new BasicDBObject();
-
-            dbObject.append("id", brand.getId());
-            dbObject.append("brand_name", brand.getBrandName());
-            dbObject.append("brand_logo_id", null);
-
-            brandCollection.insert(dbObject, WriteConcern.ACKNOWLEDGED);
-        }
+    public void insert(Brand brand) {
+        this.getMongoDBRepositoryContext().getDB().insert(brand, BrandCollection);
     }
 
     @Override
-    public void update(Brand brand){
-        DBObject query = new BasicDBObject();
-        query.put("id", brand.getId());
-        DBObject update = new BasicDBObject();
-        update.put("brand_name", brand.getBrandName());
-        update.put("brand_logo_id", null);
-
-        brandCollection.update(query, new BasicDBObject("$set", update), false, false, WriteConcern.ACKNOWLEDGED);
+    public void update(Brand brand) {
+        this.getMongoDBRepositoryContext().getDB().upsert(
+                new Query(Criteria.where("id").is(brand.getId())),
+                new Update().addToSet("brandname", brand.getBrandName())
+                        .addToSet("brandLogo", null),
+                BrandCollection
+        );
     }
 
     @Override
-    public void delete(Brand brand){
-        DBObject query = new BasicDBObject();
-        query.put("id", brand.getId());
-
-        brandCollection.remove(query);
+    public void delete(Brand brand) {
+        this.getMongoDBRepositoryContext().getDB().remove(brand, BrandCollection);
     }
 }
