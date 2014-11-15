@@ -1,6 +1,7 @@
 package org.msdai.eerigo.service.domain.domainservice;
 
 import org.msdai.eerigo.core.exception.EerigoRepositoryConcurrentModificationException;
+import org.msdai.eerigo.service.domain.model.brand.Brand;
 import org.msdai.eerigo.service.domain.model.category.Category;
 import org.msdai.eerigo.service.domain.model.product.Product;
 import org.msdai.eerigo.service.domain.repository.ProductRepository;
@@ -21,6 +22,10 @@ public class ProductDomainService {
     }
 
     public boolean existProducts(Category category) {
+        return false;
+    }
+
+    public boolean existProducts(Brand brand){
         return false;
     }
 

@@ -44,6 +44,10 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public void removeBrand(String brandId) {
         BrandDTO brandDTO = getBrand(brandId);
+        Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
+
+        if (!productDomainService.existProducts(brand))
+            brandDomainService.removeBrand(brand);
     }
 
     @Override

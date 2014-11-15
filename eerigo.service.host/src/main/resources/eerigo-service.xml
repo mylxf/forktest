@@ -19,6 +19,14 @@
         </cxf:outFaultInterceptors>
     </cxf:bus>
 
+    <jaxrs:server id="brand" address="/brand/">
+        <jaxrs:serviceBeans>
+            <ref bean="brandService"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jaxbProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
     <jaxrs:server id="category" address="/category/">
         <jaxrs:serviceBeans>
             <ref bean="categoryService"/>
@@ -27,9 +35,33 @@
             <ref bean="jaxbProvider"/>
         </jaxrs:providers>
     </jaxrs:server>
+    <jaxrs:server id="product" address="/product/">
+        <jaxrs:serviceBeans>
+            <ref bean="productService"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jaxbProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
     <jaxrs:server id="brandQuery" address="/brandQuery">
         <jaxrs:serviceBeans>
             <ref bean="brandQueryService"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jaxbProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+    <jaxrs:server id="categoryQuery" address="/categoryQuery">
+        <jaxrs:serviceBeans>
+            <ref bean="categoryQueryService"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jaxbProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+    <jaxrs:server id="productQuery" address="/productQuery">
+        <jaxrs:serviceBeans>
+            <ref bean="productQueryService"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <ref bean="jaxbProvider"/>
