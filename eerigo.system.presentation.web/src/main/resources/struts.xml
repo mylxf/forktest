@@ -8,5 +8,11 @@
         <action name="brand_management" class="org.msdai.eerigo.system.web.action.BrandManageAction">
             <result name="success">/page/product/brand_management.jsp</result>
         </action>
+        <action name="category_management" class="org.msdai.eerigo.system.web.action.CategoryManageAction">
+            <result name="success">/page/product/category_management.jsp</result>
+        </action>
+        <action name="product_management" class="org.msdai.eerigo.system.web.action.ProductManageAction">
+            <result name="success">/page/product/product_management.jsp</result>
+        </action>
     </package>
 </struts>
