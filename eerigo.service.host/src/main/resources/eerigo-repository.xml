@@ -24,4 +24,18 @@
         <constructor-arg index="1" value="${mongo.port}"/>
         <constructor-arg index="2" value="${mongo.database}"/>
     </bean>
+
+    <bean id="categoryQueryRepository"
+          class="org.msdai.eerigo.service.repositoryimpl.mongodb.query.CategoryQueryMongoDBRepository">
+        <constructor-arg index="0" value="${mongo.host}"/>
+        <constructor-arg index="1" value="${mongo.port}"/>
+        <constructor-arg index="2" value="${mongo.database}"/>
+    </bean>
+
+    <bean id="productQueryRepository"
+          class="org.msdai.eerigo.service.repositoryimpl.mongodb.query.ProductQueryMongoDBRepository">
+        <constructor-arg index="0" value="${mongo.host}"/>
+        <constructor-arg index="1" value="${mongo.port}"/>
+        <constructor-arg index="2" value="${mongo.database}"/>
+    </bean>
 </beans>

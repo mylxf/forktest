@@ -19,7 +19,7 @@
         </cxf:outFaultInterceptors>
     </cxf:bus>
 
-    <jaxrs:server id="brand" address="/brand/">
+    <jaxrs:server id="brand" address="/brand">
         <jaxrs:serviceBeans>
             <ref bean="brandService"/>
         </jaxrs:serviceBeans>
@@ -27,7 +27,7 @@
             <ref bean="jaxbProvider"/>
         </jaxrs:providers>
     </jaxrs:server>
-    <jaxrs:server id="category" address="/category/">
+    <jaxrs:server id="category" address="/category">
         <jaxrs:serviceBeans>
             <ref bean="categoryService"/>
         </jaxrs:serviceBeans>
@@ -35,7 +35,7 @@
             <ref bean="jaxbProvider"/>
         </jaxrs:providers>
     </jaxrs:server>
-    <jaxrs:server id="product" address="/product/">
+    <jaxrs:server id="product" address="/product">
         <jaxrs:serviceBeans>
             <ref bean="productService"/>
         </jaxrs:serviceBeans>
@@ -78,8 +78,21 @@
         <property name="productDomainService" ref="productDomainService"/>
     </bean>
 
+    <bean id="productService" class="org.msdai.eerigo.service.serviceimpl.action.ProductServiceImpl">
+        <property name="productDomainService" ref="productDomainService"/>
+    </bean>
+
+    <bean id="categoryQueryService" class="org.msdai.eerigo.service.serviceimpl.query.CategoryQueryServiceImpl">
+        <constructor-arg ref="categoryQueryRepository"/>
+    </bean>
+
     <bean id="brandQueryService" class="org.msdai.eerigo.service.serviceimpl.query.BrandQueryServiceImpl">
         <constructor-arg ref="brandQueryRepository"/>
+    </bean>
+
+    <bean id="productQueryService" class="org.msdai.eerigo.service.serviceimpl.query.ProductQueryServiceImpl">
+
+        <constructor-arg ref="productQueryRepository"/>
     </bean>
 
     <bean id="requestInterceptor" class="org.msdai.eerigo.core.service.ServiceRequestInterceptor"/>
