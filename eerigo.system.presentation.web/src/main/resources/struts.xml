@@ -14,5 +14,8 @@
         <action name="product_management" class="org.msdai.eerigo.system.web.action.ProductManageAction">
             <result name="success">/page/product/product_management.jsp</result>
         </action>
+        <action name="country_management" class="org.msdai.eerigo.system.web.action.CountryManageAction">
+            <result name="success">/page/product/country_management.jsp</result>
+        </action>
     </package>
 </struts>

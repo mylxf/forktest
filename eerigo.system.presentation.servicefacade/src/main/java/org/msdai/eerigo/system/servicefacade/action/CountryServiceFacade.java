@@ -3,7 +3,7 @@ package org.msdai.eerigo.system.servicefacade.action;
 import org.msdai.eerigo.core.exception.EerigoRestClientException;
 import org.msdai.eerigo.core.service.RestClient;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CountryDTO;
-
+import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
 import java.util.List;
 
 /**
@@ -25,8 +25,18 @@ public class CountryServiceFacade {
         restClient.post("/removeCountry", brandId, null);
     }
 
-    public void batchRemoveCountry(List<String> list) throws EerigoRestClientException{
+    public void batchRemoveCountry(List<String> list) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/country");
         restClient.post("/batchRemoveCountry", list, null);
+    }
+
+    public PageResultDTO<CountryDTO> getCountry(String id) throws EerigoRestClientException {
+        RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/country");
+        return restClient.post("/getCountry", id, PageResultDTO.class);
+    }
+
+    public PageResultDTO<List<CountryDTO>> getCountries() throws EerigoRestClientException {
+        RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/country");
+        return restClient.post("/getCountries", null, PageResultDTO.class);
     }
 }
