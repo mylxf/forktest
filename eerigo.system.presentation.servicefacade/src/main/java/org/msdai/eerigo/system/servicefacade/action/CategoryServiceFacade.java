@@ -3,6 +3,8 @@ package org.msdai.eerigo.system.servicefacade.action;
 import org.msdai.eerigo.core.exception.EerigoRestClientException;
 import org.msdai.eerigo.core.service.RestClient;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
+import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
+
 import java.util.List;
 
 /**
@@ -30,5 +32,15 @@ public class CategoryServiceFacade {
     public void batchRemoveCategory(List<String> list) throws EerigoRestClientException{
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/category");
         restClient.post("/batchRemoveCategory", list, null);
+    }
+
+    public PageResultDTO<CategoryDTO> getCategory(String id) throws EerigoRestClientException{
+        RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/category");
+        return restClient.post("/getCategory", id, PageResultDTO.class);
+    }
+
+    public PageResultDTO<List<CategoryDTO>> getCategories() throws EerigoRestClientException{
+        RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/category");
+        return restClient.post("/getCategories", null, PageResultDTO.class);
     }
 }
