@@ -9,7 +9,7 @@
 
 <div class="container bs-docs-container">
     <div class="row">
-        <jsp:include page="/page/product/product_menu.jsp"/>
+        <jsp:include page="/page/menu.jsp"/>
         <div class="col-md-9">
             <!--正文-->
             <div class="bar-mod clearfix tl">
@@ -24,60 +24,53 @@
                 <tr>
                     <th><input type="checkbox"/></th>
                     <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>类别名称</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th><input type="checkbox"/></th>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-danger btn-xs">Danger</button>
-                            <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">删除</a></li>
-                                <li><a href="#">编辑</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">自定义</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th><input type="checkbox"/></th>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th><input type="checkbox"/></th>
-                    <td>3</td>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-xs">删除</button>
-                        <button type="button" class="btn btn-success btn-xs">编辑</button>
-                    </td>
-                </tr>
+                    <s:iterator value="models" status="index">
+                        <tr>
+                            <th><input id="chk_<s:property value="id"/>" type="checkbox"/></th>
+                            <td><s:property value="id"/></td>
+                            <td><s:property value="categoryName"/></td>
+                            <td>
+                                <button id="btnDel_<s:property value="id"/>" type="button" class="btn btn-danger btn-xs">删除</button>
+                                <button id="btnEdit_<s:property value="id"/>" type="button" class="btn btn-success btn-xs">编辑</button>
+                            </td>
+                        </tr>
+                    </s:iterator>
                 </tbody>
             </table>
             <ul class="pagination">
-                <li class="disabled"><a href="#">«</a></li>
+                <s:url id="firstPage" action='category_management'>
+                    <s:param name='s'>1</s:param>
+                </s:url>
+                <s:a href="%{firstPage}" class="">首页</s:a>
+
+                <s:url id="prePage" action='category_management'>
+                    <s:param name='s'><s:property value='s-1'/></s:param>
+                </s:url>
+                <s:a href="%{prePage}" class="">上一页</s:a>
+                <a href="" class="">1</a> <span>跳转到<input type="" class="yem" value=""/>页</span>
+
+                <s:url id="nextPage" action='category_management'>
+                    <s:param name='s'><s:property value='s+1'/></s:param>
+                </s:url>
+                <s:a href="%{nextPage}" class="">下一页</s:a>
+
+                <s:url id="lastPage" action='category_management'>
+                    <s:param name='s'><s:property value='2'/></s:param>
+                </s:url>
+                <s:a href="%{lastPage}" class="">尾页</s:a>
+
+                <!--<li class="disabled"><a href="#">«</a></li>
                 <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">2</a></li>
                 <li><a href="#">3</a></li>
                 <li><a href="#">4</a></li>
                 <li><a href="#">5</a></li>
-                <li><a href="#">»</a></li>
+                <li><a href="#">»</a></li>-->
             </ul>
             <!--正文 end-->
         </div>
