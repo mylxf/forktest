@@ -2,12 +2,16 @@ package org.msdai.eerigo.service.serviceinterface.datacontract;
 
 import org.msdai.eerigo.core.service.BaseDTO;
 
+import javax.xml.bind.annotation.XmlSeeAlso;
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: 田文涛
  * Date: 11/12/2014
  * Time: 3:22 PM
  */
+@XmlSeeAlso({BrandDTO.class, ArrayList.class})
 public class PageResultDTO<T> extends BaseDTO {
     private int count;
 
