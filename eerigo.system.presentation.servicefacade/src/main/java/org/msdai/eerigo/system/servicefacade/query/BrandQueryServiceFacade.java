@@ -15,7 +15,7 @@ import java.util.List;
  * Time: 10:02
  */
 public class BrandQueryServiceFacade {
-    public PageResultDTO<List<BrandDTO>> queryBrands(Integer index, Integer size) throws EerigoRestClientException {
+    public PageResultDTO queryBrands(Integer index, Integer size) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/brandQuery");
         BrandQueryRequestMessage request = new BrandQueryRequestMessage();
         request.setIndex(index);

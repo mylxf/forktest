@@ -8,6 +8,12 @@
         <action name="brand_management" class="org.msdai.eerigo.system.web.action.BrandManageAction">
             <result name="success">/page/product/brand_management.jsp</result>
         </action>
+
+        <action name="brand" class="org.msdai.eerigo.system.web.action.BrandAction">
+            <result name="add">/page/product/brand_save.jsp</result>
+        </action>
+
+
         <action name="category_management" class="org.msdai.eerigo.system.web.action.CategoryManageAction">
             <result name="success">/page/product/category_management.jsp</result>
             <result name="addCategory">/page/product/category_add.jsp</result>
