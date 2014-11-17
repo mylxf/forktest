@@ -5,7 +5,7 @@
             <a href="#">商品管理</a>
             <ul>
                 <li><a href="${pageContext.request.contextPath}/page/product/category_management.jsp">类别管理</a></li>
-                <li><a href="${pageContext.request.contextPath}/page/product/brand_management.jsp">品牌管理</a></li>
+                <li><a href="${pageContext.request.contextPath}/page/product/brand_management.action">品牌管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/page/product/country_management.jsp">产地管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/page/product/product_management.jsp">商品管理</a></li>
             </ul>
