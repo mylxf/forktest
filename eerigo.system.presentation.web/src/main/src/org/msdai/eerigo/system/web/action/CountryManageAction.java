@@ -26,4 +26,12 @@ public class CountryManageAction extends BasePageAction {
 
         return SUCCESS;
     }
+
+    public String addCountryView() throws Exception {
+        return "addCountryView";
+    }
+
+    public String modifyCountryView() throws Exception{
+        return "modifyCountryView";
+    }
 }

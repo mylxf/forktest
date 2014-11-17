@@ -20,10 +20,8 @@
         <div class="col-md-9">
             <!--正文-->
             <div class="bar-mod clearfix tl">
-                <input type="text" class="form-control dib" placeholder="Search">
-                <button type="submit" class="btn btn-default">搜索</button>
-                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal"><span
-                        class="glyphicon glyphicon-plus"></span> 添加</a>
+                <a href="/country_management.action?method=addCountryView" class="btn btn-success"><span
+                        class="glyphicon glyphicon-plus"></span>添加</a>
                 <a href="#" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
             </div>
             <table class="table table-striped table-condensed">
@@ -56,22 +54,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
+    <iframe src="/page/product/country_add.jsp" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"/>
 </div>
 
 </body>

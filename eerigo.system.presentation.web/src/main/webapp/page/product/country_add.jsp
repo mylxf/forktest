@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+
+<form name="requimentLogin" action="country_opt.action?method=addCountry" method="post" id="f_requiment_login">
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -16,12 +19,13 @@
         <div class="modal-body">
             <div class="form-group">
                 <label>产地</label>
-                <input type="text" class="form-control" id="txtCountryName" />
+                <input type="text" class="form-control" name="countryName" />
             </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-            <button type="button" class="btn btn-primary">保存</button>
+            <input type="submit" class="btn btn-primary" value="保存"/>
         </div>
     </div>
 </div>
+</form>

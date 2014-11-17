@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-        "http://struts.apache.org/dtds/struts-2.0.dtd">
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
     <constant name="struts.devMode" value="true"/>
     <package name="default" extends="struts-default">
+        <action name="index" class="org.msdai.eerigo.system.web.action.IndexAction">
+            <result name="index">/index.jsp</result>
+        </action>
         <action name="brand_management" class="org.msdai.eerigo.system.web.action.BrandManageAction">
             <result name="success">/page/product/brand_management.jsp</result>
         </action>
@@ -18,8 +21,11 @@
         </action>
         <action name="country_management" class="org.msdai.eerigo.system.web.action.CountryManageAction">
             <result name="success">/page/product/country_management.jsp</result>
-            <result name="addCountry">/page/product/country_add.jsp</result>
-            <result name="modifyCountry">/page/product/country_edit.jsp</result>
+            <result name="addCountryView">/page/product/country_add.jsp</result>
+            <result name="modifyCountryView">/page/product/country_edit.jsp</result>
+        </action>
+        <action name="country_opt" class="org.msdai.eerigo.system.web.action.CountryAction">
+            <result name="success">/page/product/country_management.jsp</result>
         </action>
     </package>
 </struts>
