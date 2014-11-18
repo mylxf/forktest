@@ -1,11 +1,13 @@
 package org.msdai.eerigo.system.web.action;
 
 import org.msdai.eerigo.core.BaseAction;
+import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
 import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
 import org.msdai.eerigo.system.servicefacade.query.CategoryQueryServiceFacade;
 import org.msdai.eerigo.system.web.model.CategoryModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +26,15 @@ public class CategoryManageAction extends BaseAction {
     public String doExecute() throws Exception {
         PageResultDTO<List<CategoryDTO>> result = categoryQueryServiceFacade.queryCategories(0, 20);
 
-        //transfer
+        models = new ArrayList<CategoryModel>();
+        for (CategoryDTO categoryDTO : result.getResult()) {
+            models.add(ConvertUtils.convert(categoryDTO, CategoryModel.class));
+        }
+
         return SUCCESS;
+    }
+
+    public String addCategoryView() throws Exception {
+        return "addCategoryView";
     }
 }

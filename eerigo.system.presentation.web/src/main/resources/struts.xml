@@ -19,18 +19,19 @@
 
         <action name="category_management" class="org.msdai.eerigo.system.web.action.CategoryManageAction">
             <result name="success">/page/product/category_management.jsp</result>
-            <result name="addCategory">/page/product/category_add.jsp</result>
-            <result name="modifyCategory">/page/product/category_edit.jsp</result>
+        </action>
+        <action name="category_opt" class="org.msdai.eerigo.system.web.action.CategoryAction">
+            <result name="optCategoryView">/page/product/category_save.jsp</result>
+            <result name="success">/page/product/category_management.jsp</result>
         </action>
         <action name="product_management" class="org.msdai.eerigo.system.web.action.ProductManageAction">
             <result name="success">/page/product/product_management.jsp</result>
         </action>
         <action name="country_management" class="org.msdai.eerigo.system.web.action.CountryManageAction">
             <result name="success">/page/product/country_management.jsp</result>
-            <result name="addCountryView">/page/product/country_add.jsp</result>
-            <result name="modifyCountryView">/page/product/country_edit.jsp</result>
         </action>
         <action name="country_opt" class="org.msdai.eerigo.system.web.action.CountryAction">
+            <result name="optCountryView">/page/product/country_save.jsp</result>
             <result name="success">/page/product/country_management.jsp</result>
         </action>
     </package>

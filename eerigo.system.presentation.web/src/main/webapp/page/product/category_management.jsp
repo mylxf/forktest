@@ -15,7 +15,7 @@
             <div class="bar-mod clearfix tl">
                 <input type="text" class="form-control dib" placeholder="Search">
                 <button type="submit" class="btn btn-default">搜索</button>
-                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal"><span
+                <a href="/category_management.action?method=addCategoryView" class="btn btn-success"><span
                         class="glyphicon glyphicon-plus"></span> 添加</a>
                 <a href="#" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
             </div>

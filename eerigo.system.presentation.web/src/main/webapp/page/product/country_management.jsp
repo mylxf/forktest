@@ -41,7 +41,7 @@
                             <td><s:property value="countryName"/></td>
                             <td>
                                 <button id="btnDel_<s:property value="id"/>" type="button" class="btn btn-danger btn-xs">删除</button>
-                                <button id="btnEdit_<s:property value="id"/>" type="button" class="btn btn-success btn-xs">编辑</button>
+                                <input id="btnEdit_<s:property value="id"/>" type="button" class="btn btn-success btn-xs" onclick="openwin('${pageContext.request.contextPath}/page/product/country_opt.action?id=<s:property value="id"/>');" value="编辑"/>
                             </td>
                         </tr>
                     </s:iterator>
