@@ -1,10 +1,8 @@
 package org.msdai.eerigo.service.query.repository;
 
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
 import org.msdai.eerigo.service.serviceinterface.message.BrandQueryRequestMessage;
-
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,5 +11,5 @@ import java.util.List;
  * Time: 11:21 AM
  */
 public interface BrandQueryRepository {
-    PageResultDTO<List<BrandDTO>> queryBrands(BrandQueryRequestMessage brandQueryRequestMessage);
+    PagedResult<BrandDTO> queryBrands(BrandQueryRequestMessage brandQueryRequestMessage);
 }

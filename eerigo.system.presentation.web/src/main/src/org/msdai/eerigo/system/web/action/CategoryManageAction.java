@@ -1,9 +1,9 @@
 package org.msdai.eerigo.system.web.action;
 
 import org.msdai.eerigo.core.BaseAction;
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
 import org.msdai.eerigo.system.servicefacade.query.CategoryQueryServiceFacade;
 import org.msdai.eerigo.system.web.model.CategoryModel;
 
@@ -24,10 +24,10 @@ public class CategoryManageAction extends BaseAction {
 
     @Override
     public String doExecute() throws Exception {
-        PageResultDTO<List<CategoryDTO>> result = categoryQueryServiceFacade.queryCategories(0, 20);
+        PagedResult<CategoryDTO> result = categoryQueryServiceFacade.queryCategories(0, 20);
 
         models = new ArrayList<CategoryModel>();
-        for (CategoryDTO categoryDTO : result.getResult()) {
+        for (CategoryDTO categoryDTO : result.getData()) {
             models.add(ConvertUtils.convert(categoryDTO, CategoryModel.class));
         }
 

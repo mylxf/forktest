@@ -2,14 +2,12 @@ package org.msdai.eerigo.service.repositoryimpl.mongodb.query;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.exception.EerigoException;
 import org.msdai.eerigo.service.query.repository.CategoryQueryRepository;
 import org.msdai.eerigo.service.repositoryimpl.MongoDBQueryRepository;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
 import org.msdai.eerigo.service.serviceinterface.message.CategoryQueryRequestMessage;
-
-import java.util.List;
 
 /**
  * Created by fengfeng on 14/11/15.
@@ -34,7 +32,7 @@ public class CategoryQueryMongoDBRepository extends MongoDBQueryRepository imple
     }
 
     @Override
-    public PageResultDTO<List<CategoryDTO>> queryCategories(CategoryQueryRequestMessage categoryQueryRequestMessage) {
+    public PagedResult<CategoryDTO> queryCategories(CategoryQueryRequestMessage categoryQueryRequestMessage) {
         return null;
     }
 

@@ -1,7 +1,8 @@
 package org.msdai.eerigo.system.web.action;
 
 import org.msdai.eerigo.core.BaseAction;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
+import org.msdai.eerigo.core.PagedResult;
+
 import org.msdai.eerigo.service.serviceinterface.datacontract.ProductDTO;
 import org.msdai.eerigo.system.servicefacade.query.ProductQueryServiceFacade;
 import org.msdai.eerigo.system.web.model.ProductModel;
@@ -22,7 +23,7 @@ public class ProductManageAction extends BaseAction {
 
     @Override
     public String doExecute() throws Exception {
-        PageResultDTO<List<ProductDTO>> result = productQueryServiceFacade.queryProducts(0, 20);
+        PagedResult<ProductDTO> result = productQueryServiceFacade.queryProducts(0, 20);
 
         //transfer
         return SUCCESS;

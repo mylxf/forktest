@@ -1,9 +1,10 @@
 package org.msdai.eerigo.system.web.action;
 
 import org.msdai.eerigo.core.BasePageAction;
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CountryDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
+
 import org.msdai.eerigo.system.servicefacade.action.CountryServiceFacade;
 import org.msdai.eerigo.system.web.model.CountryModel;
 
@@ -24,10 +25,10 @@ public class CountryManageAction extends BasePageAction {
 
     @Override
     public String doExecute() throws Exception {
-        PageResultDTO<List<CountryDTO>> result = countryServiceFacade.getCountries();
+        List<CountryDTO> result = countryServiceFacade.getCountries();
 
         models = new ArrayList<CountryModel>();
-        for(CountryDTO countryDTO: result.getResult()){
+        for (CountryDTO countryDTO : result) {
             models.add(ConvertUtils.convert(countryDTO, CountryModel.class));
         }
 

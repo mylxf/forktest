@@ -1,17 +1,17 @@
 package org.msdai.eerigo.service.repositoryimpl.mongodb.query;
 
-import com.mongodb.*;
-import org.msdai.eerigo.service.serviceinterface.message.BrandQueryRequestMessage;
+import org.msdai.eerigo.core.PagedResult;
+
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
+import org.msdai.eerigo.service.serviceinterface.message.BrandQueryRequestMessage;
 
 import org.msdai.eerigo.service.query.repository.BrandQueryRepository;
+
 import org.msdai.eerigo.service.repositoryimpl.MongoDBQueryRepository;
 
 import org.msdai.eerigo.core.exception.EerigoException;
 
-import java.util.List;
-import java.util.ArrayList;
+import com.mongodb.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -40,18 +40,17 @@ public class BrandQueryMongoDBRepository extends MongoDBQueryRepository implemen
     }
 
     @Override
-    public PageResultDTO<List<BrandDTO>> queryBrands(BrandQueryRequestMessage brandQueryRequestMessage) {
+    public PagedResult<BrandDTO> queryBrands(BrandQueryRequestMessage brandQueryRequestMessage) {
         int index = brandQueryRequestMessage.getIndex();
         int size = brandQueryRequestMessage.getSize();
-        PageResultDTO<List<BrandDTO>> result = new PageResultDTO<List<BrandDTO>>();
+        PagedResult<BrandDTO> result = new PagedResult<BrandDTO>();
         QueryBuilder queryBuilder = QueryBuilder.start();
         DBObject query = queryBuilder.get();
         long count = brandCollection.count(query);
         if (count > 0) {
-            result.setCount(Long.valueOf(count).intValue());
             DBCursor cursor = brandCollection.find(query).skip(index * size).limit(size);
             while (cursor.hasNext()) {
-                result.getResult().add(transferBrandDTO(cursor.next()));
+                result.add(transferBrandDTO(cursor.next()));
             }
         }
         return result;

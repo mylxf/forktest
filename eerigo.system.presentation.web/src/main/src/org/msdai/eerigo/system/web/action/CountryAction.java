@@ -3,7 +3,6 @@ package org.msdai.eerigo.system.web.action;
 import org.msdai.eerigo.core.BasePageAction;
 import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CountryDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
 import org.msdai.eerigo.system.servicefacade.action.CountryServiceFacade;
 import org.msdai.eerigo.system.web.model.CountryModel;
 
@@ -23,10 +22,10 @@ public class CountryAction extends BasePageAction {
     public String doExecute() throws Exception {
         String id = request.getParameter("id");
         if (id != null && id != "") {
-            PageResultDTO<CountryDTO> resultDTO = countryServiceFacade.getCountry(id);
+            CountryDTO country = countryServiceFacade.getCountry(id);
 
-            if (resultDTO.getCount() == 1) {
-                model = ConvertUtils.convert(resultDTO.getResult(), CountryModel.class);
+            if (country != null) {
+                model = ConvertUtils.convert(country, CountryModel.class);
             }
             method = "modifyCountry";
         } else {

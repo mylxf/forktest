@@ -111,7 +111,10 @@ public class PagedResult<T> implements Collection<T>, Iterable<T> {
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        return addAll(c);
+        for (T t : c) {
+            add(t);
+        }
+        return true;
     }
 
     @Override

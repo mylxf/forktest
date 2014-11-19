@@ -1,15 +1,15 @@
 package org.msdai.eerigo.service.serviceimpl.query;
 
 
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
+
 import org.msdai.eerigo.service.serviceinterface.message.BrandQueryRequestMessage;
 import org.msdai.eerigo.service.query.repository.BrandQueryRepository;
 import org.msdai.eerigo.service.serviceinterface.servicecontract.query.BrandQueryService;
 
-import java.util.ArrayList;
 import java.util.List;
-
+import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,7 +26,7 @@ public class BrandQueryServiceImpl implements BrandQueryService {
     }
 
     @Override
-    public PageResultDTO<List<BrandDTO>> queryBrands(BrandQueryRequestMessage brandQueryRequestMessage) {
+    public PagedResult<BrandDTO> queryBrands(BrandQueryRequestMessage brandQueryRequestMessage) {
         //return brandQueryRepository.queryBrands(brandQueryRequestMessage);
         List<BrandDTO> list = new ArrayList<BrandDTO>();
         BrandDTO brandDTO1 = new BrandDTO();
@@ -39,9 +39,8 @@ public class BrandQueryServiceImpl implements BrandQueryService {
 
         list.add(brandDTO1);
         list.add(brandDTO2);
-        PageResultDTO<List<BrandDTO>> result = new PageResultDTO<List<BrandDTO>>();
-        result.setCount(2);
-        result.setResult(list);
+        PagedResult<BrandDTO> result = new PagedResult<BrandDTO>();
+        result.addAll(list);
         return result;
 
 

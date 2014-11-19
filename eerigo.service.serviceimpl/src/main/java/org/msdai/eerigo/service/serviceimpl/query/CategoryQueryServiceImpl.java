@@ -1,8 +1,10 @@
 package org.msdai.eerigo.service.serviceimpl.query;
 
 
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.service.query.repository.CategoryQueryRepository;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
+import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
+
 import org.msdai.eerigo.service.serviceinterface.message.CategoryQueryRequestMessage;
 import org.msdai.eerigo.service.serviceinterface.servicecontract.query.CategoryQueryService;
 
@@ -17,7 +19,7 @@ public class CategoryQueryServiceImpl implements CategoryQueryService {
     }
 
     @Override
-    public PageResultDTO queryCategories(CategoryQueryRequestMessage categoryQueryRequestMessage) {
+    public PagedResult<CategoryDTO> queryCategories(CategoryQueryRequestMessage categoryQueryRequestMessage) {
         return this.categoryQueryRepository.queryCategories(categoryQueryRequestMessage);
     }
 }

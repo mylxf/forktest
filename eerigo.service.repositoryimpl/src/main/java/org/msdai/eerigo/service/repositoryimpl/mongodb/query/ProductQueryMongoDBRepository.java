@@ -2,14 +2,13 @@ package org.msdai.eerigo.service.repositoryimpl.mongodb.query;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.exception.EerigoException;
 import org.msdai.eerigo.service.query.repository.ProductQueryRepository;
 import org.msdai.eerigo.service.repositoryimpl.MongoDBQueryRepository;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
 import org.msdai.eerigo.service.serviceinterface.datacontract.ProductDTO;
 import org.msdai.eerigo.service.serviceinterface.message.ProductQueryRequestMessage;
 
-import java.util.List;
 
 /**
  * Created by fengfeng on 14/11/15.
@@ -34,7 +33,7 @@ public class ProductQueryMongoDBRepository extends MongoDBQueryRepository implem
     }
 
     @Override
-    public PageResultDTO<List<ProductDTO>> queryProducts(ProductQueryRequestMessage productQueryRequestMessage) {
+    public PagedResult<ProductDTO> queryProducts(ProductQueryRequestMessage productQueryRequestMessage) {
         return null;
     }
 }

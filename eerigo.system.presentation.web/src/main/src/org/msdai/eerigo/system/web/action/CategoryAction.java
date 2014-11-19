@@ -3,7 +3,7 @@ package org.msdai.eerigo.system.web.action;
 import org.msdai.eerigo.core.BasePageAction;
 import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
+
 import org.msdai.eerigo.system.servicefacade.action.CategoryServiceFacade;
 import org.msdai.eerigo.system.web.model.CategoryModel;
 
@@ -23,10 +23,10 @@ public class CategoryAction extends BasePageAction {
     public String doExecute() throws Exception {
         String id = request.getParameter("id");
         if (id != null && id != "") {
-            PageResultDTO<CategoryDTO> resultDTO = categoryServiceFacade.getCategory(id);
+            CategoryDTO category = categoryServiceFacade.getCategory(id);
 
-            if (resultDTO.getCount() == 1) {
-                model = ConvertUtils.convert(resultDTO.getResult(), CategoryModel.class);
+            if (category != null) {
+                model = ConvertUtils.convert(category, CategoryModel.class);
             }
         }
 

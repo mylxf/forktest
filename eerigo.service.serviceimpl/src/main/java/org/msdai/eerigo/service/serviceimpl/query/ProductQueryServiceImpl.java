@@ -1,7 +1,8 @@
 package org.msdai.eerigo.service.serviceimpl.query;
 
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.service.query.repository.ProductQueryRepository;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
+import org.msdai.eerigo.service.serviceinterface.datacontract.ProductDTO;
 import org.msdai.eerigo.service.serviceinterface.message.ProductQueryRequestMessage;
 import org.msdai.eerigo.service.serviceinterface.servicecontract.query.ProductQueryService;
 
@@ -16,7 +17,7 @@ public class ProductQueryServiceImpl implements ProductQueryService {
     }
 
     @Override
-    public PageResultDTO queryProducts(ProductQueryRequestMessage productQueryRequestMessage) {
+    public PagedResult queryProducts(ProductQueryRequestMessage productQueryRequestMessage) {
         return this.productQueryRepository.queryProducts(productQueryRequestMessage);
     }
 }

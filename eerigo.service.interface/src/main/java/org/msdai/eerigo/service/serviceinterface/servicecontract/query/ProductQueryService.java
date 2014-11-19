@@ -1,6 +1,6 @@
 package org.msdai.eerigo.service.serviceinterface.servicecontract.query;
 
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.service.serviceinterface.message.ProductQueryRequestMessage;
 
 import javax.ws.rs.Consumes;
@@ -17,5 +17,5 @@ import javax.ws.rs.core.MediaType;
 public interface ProductQueryService {
     @POST
     @Path("/queryProducts")
-    PageResultDTO queryProducts(ProductQueryRequestMessage productQueryRequestMessage);
+    PagedResult queryProducts(ProductQueryRequestMessage productQueryRequestMessage);
 }
