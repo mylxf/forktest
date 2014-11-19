@@ -16,7 +16,6 @@
             <result name="add">/page/product/brand_save.jsp</result>
         </action>
 
-
         <action name="category_management" class="org.msdai.eerigo.system.web.action.CategoryManageAction">
             <result name="success">/page/product/category_management.jsp</result>
         </action>

@@ -20,8 +20,6 @@ import java.util.List;
  * Time: 0:01
  */
 public class BrandMongoDBRepository extends MongoDBRepository<Brand> implements BrandRepository {
-    private static final String BrandCollection = "brand";
-
     public BrandMongoDBRepository(MongoDBRepositoryContext mongoDBRepositoryContext) {
         super(mongoDBRepositoryContext);
     }
@@ -39,26 +37,5 @@ public class BrandMongoDBRepository extends MongoDBRepository<Brand> implements 
     @Override
     public List<Brand> findAll() {
         return this.getMongoDBRepositoryContext().getDB().findAll(Brand.class);
-    }
-
-    @Override
-    public void insert(Brand brand) {
-        this.getMongoDBRepositoryContext().getDB().insert(brand, BrandCollection);
-    }
-
-    @Override
-    public void update(Brand brand) {
-        this.getMongoDBRepositoryContext().getDB().upsert(
-                new Query(Criteria.where("id").is(brand.getId())),
-                new Update()
-                        .addToSet("brandname", brand.getBrandName())
-                        .addToSet("brandlogo", null),
-                BrandCollection
-        );
-    }
-
-    @Override
-    public void delete(Brand brand) {
-        this.getMongoDBRepositoryContext().getDB().remove(brand, BrandCollection);
     }
 }

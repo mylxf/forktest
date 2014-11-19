@@ -20,7 +20,7 @@
         <div class="col-md-9">
             <!--正文-->
             <div class="bar-mod clearfix tl">
-                <a href="/country_management.action?method=addCountryView" class="btn btn-success"><span
+                <a href="/country_opt" class="btn btn-success"><span
                         class="glyphicon glyphicon-plus"></span>添加</a>
                 <a href="#" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
             </div>

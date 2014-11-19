@@ -20,54 +20,22 @@ import java.util.List;
  * Time: 0:01
  */
 public class ProductMongoDBRepository extends MongoDBRepository<Product> implements ProductRepository {
-    private static final String ProductCollection = "product";
-
     public ProductMongoDBRepository(MongoDBRepositoryContext mongoDBRepositoryContext) {
         super(mongoDBRepositoryContext);
     }
 
     @Override
     public Product find(String id) {
-        return null;
+        return this.getMongoDBRepositoryContext().getDB().findById(id, Product.class);
     }
 
     @Override
     public int count() {
-        return 0;
+        return Long.valueOf(this.getMongoDBRepositoryContext().getDB().count(new Query(), Product.class)).intValue();
     }
 
     @Override
     public List<Product> findAll() {
-        return null;
-    }
-
-    @Override
-    public void insert(Product product) {
-        this.getMongoDBRepositoryContext().getDB().insert(product, ProductCollection);
-    }
-
-    @Override
-    public void update(Product product) {
-        this.getMongoDBRepositoryContext().getDB().upsert(
-                new Query(Criteria.where("id").is(product.getId())),
-                new Update()
-                    .addToSet("productname", product.getProductName())
-                    .addToSet("productcategory", product.getProductCategory())
-                    .addToSet("productbrand", product.getProductBrand())
-                    .addToSet("origin", product.getOrigin())
-                    .addToSet("productdesc", product.getProductDesc())
-                    .addToSet("productimages", product.getProductImages())
-                    .addToSet("costprice", product.getCostPrice())
-                    .addToSet("sellprice", product.getSellPrice())
-                    .addToSet("productDimensions", product.getProductDimensions())
-                    .addToSet("weight", product.getWeight())
-                    .addToSet("productProperties", product.getProductProperties()),
-                ProductCollection
-        );
-    }
-
-    @Override
-    public void delete(Product product) {
-        this.getMongoDBRepositoryContext().getDB().remove(product, ProductCollection);
+        return this.getMongoDBRepositoryContext().getDB().findAll(Product.class);
     }
 }

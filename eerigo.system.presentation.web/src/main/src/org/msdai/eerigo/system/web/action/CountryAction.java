@@ -28,6 +28,9 @@ public class CountryAction extends BasePageAction {
             if (resultDTO.getCount() == 1) {
                 model = ConvertUtils.convert(resultDTO.getResult(), CountryModel.class);
             }
+            method = "modifyCountry";
+        } else {
+            method = "addCountry";
         }
 
         return "optCountryView";
@@ -35,7 +38,7 @@ public class CountryAction extends BasePageAction {
 
     public String addCountry() throws Exception {
         CountryDTO countryDTO = new CountryDTO();
-        countryDTO.setCountryName(request.getParameter("countryName"));
+        countryDTO.setCountryName(request.getParameter("model.countryName"));
         countryDTO.setCountryFlag(null);
         countryServiceFacade.addCountry(countryDTO);
         return SUCCESS;
