@@ -1,10 +1,12 @@
 package org.msdai.eerigo.system.servicefacade.query;
 
-import org.msdai.eerigo.core.exception.EerigoRestClientException;
-import org.msdai.eerigo.core.service.RestClient;
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
 import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
 import org.msdai.eerigo.service.serviceinterface.message.BrandQueryRequestMessage;
+
+import org.msdai.eerigo.core.service.RestClient;
+
+import org.msdai.eerigo.core.exception.EerigoRestClientException;
 
 import java.util.List;
 
@@ -20,6 +22,6 @@ public class BrandQueryServiceFacade {
         BrandQueryRequestMessage request = new BrandQueryRequestMessage();
         request.setIndex(index);
         request.setSize(size);
-        return restClient.post("/queryBrands", request, PageResultDTO.class);
+        return  restClient.post("/queryBrands", request, PageResultDTO.class);
     }
 }

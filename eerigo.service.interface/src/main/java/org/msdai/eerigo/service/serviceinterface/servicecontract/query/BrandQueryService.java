@@ -1,15 +1,10 @@
 package org.msdai.eerigo.service.serviceinterface.servicecontract.query;
 
-import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
 import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
 import org.msdai.eerigo.service.serviceinterface.message.BrandQueryRequestMessage;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,5 +17,5 @@ import java.util.List;
 public interface BrandQueryService {
     @POST
     @Path("/queryBrands")
-    PageResultDTO<List<BrandDTO>> queryBrands(BrandQueryRequestMessage brandQueryRequestMessage);
+    PageResultDTO queryBrands(BrandQueryRequestMessage brandQueryRequestMessage);
 }

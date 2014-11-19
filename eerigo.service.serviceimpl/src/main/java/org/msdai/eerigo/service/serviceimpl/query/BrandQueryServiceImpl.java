@@ -39,8 +39,10 @@ public class BrandQueryServiceImpl implements BrandQueryService {
 
         list.add(brandDTO1);
         list.add(brandDTO2);
-
-        return new PageResultDTO<List<BrandDTO>>(2, list);
+        PageResultDTO<List<BrandDTO>> result = new PageResultDTO<List<BrandDTO>>();
+        result.setCount(2);
+        result.setResult(list);
+        return result;
 
 
     }

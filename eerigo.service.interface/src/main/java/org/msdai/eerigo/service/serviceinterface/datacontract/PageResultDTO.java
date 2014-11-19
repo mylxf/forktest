@@ -11,15 +11,12 @@ import java.util.ArrayList;
  * Date: 11/12/2014
  * Time: 3:22 PM
  */
-@XmlSeeAlso({BrandDTO.class, ArrayList.class})
 public class PageResultDTO<T> extends BaseDTO {
     private int count;
 
     private T result;
 
-    public PageResultDTO(int count, T result) {
-        this.count = count;
-        this.result = result;
+    public PageResultDTO() {
     }
 
     public T getResult() {

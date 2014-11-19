@@ -55,7 +55,7 @@ public class RestClient {
             os.flush();
             handleWebResponse(conn);
             BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-            return JsonUtils.parseJson(br, tClass);
+            return (T)JsonUtils.parseJson(br, tClass);
         } catch (Exception exception) {
             assert url != null;
             handleException(exception, url.toString());
@@ -121,7 +121,6 @@ public class RestClient {
             handleWebResponse(conn);
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     (conn.getInputStream()), "utf-8"));
-
             return JsonUtils.parseJson(br, tClass);
         } catch (Exception exception) {
             assert url != null;

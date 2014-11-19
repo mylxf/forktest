@@ -9,6 +9,9 @@ public class BrandDTO extends BaseDTO {
     private String id;
     private String brandName;
 
+    public BrandDTO() {
+    }
+
     public String getId() {
         return this.id;
     }

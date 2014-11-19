@@ -43,7 +43,7 @@ public class BrandQueryMongoDBRepository extends MongoDBQueryRepository implemen
     public PageResultDTO<List<BrandDTO>> queryBrands(BrandQueryRequestMessage brandQueryRequestMessage) {
         int index = brandQueryRequestMessage.getIndex();
         int size = brandQueryRequestMessage.getSize();
-        PageResultDTO<List<BrandDTO>> result = new PageResultDTO<List<BrandDTO>>(0, new ArrayList<BrandDTO>());
+        PageResultDTO<List<BrandDTO>> result = new PageResultDTO<List<BrandDTO>>();
         QueryBuilder queryBuilder = QueryBuilder.start();
         DBObject query = queryBuilder.get();
         long count = brandCollection.count(query);
