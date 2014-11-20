@@ -11,6 +11,9 @@ public class BrandModel {
     private String brandName;
     private ResourceModel brandLogo;
 
+    public BrandModel() {
+    }
+
     public String getId() {
         return id;
     }

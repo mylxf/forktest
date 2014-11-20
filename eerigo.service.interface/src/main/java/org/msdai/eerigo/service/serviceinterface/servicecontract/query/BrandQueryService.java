@@ -1,12 +1,11 @@
 package org.msdai.eerigo.service.serviceinterface.servicecontract.query;
 
 import org.msdai.eerigo.core.PagedResult;
+
+import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
 import org.msdai.eerigo.service.serviceinterface.message.BrandQueryRequestMessage;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -20,5 +19,5 @@ import javax.ws.rs.core.MediaType;
 public interface BrandQueryService {
     @POST
     @Path("/queryBrands")
-    PagedResult queryBrands(BrandQueryRequestMessage brandQueryRequestMessage);
+    PagedResult<BrandDTO> queryBrands(BrandQueryRequestMessage brandQueryRequestMessage);
 }
