@@ -17,7 +17,7 @@
                         class="glyphicon glyphicon-plus"></span> 添加</a>
                 <a href="#" class="btn btn-danger"><span class="glyphicon"></span> 全部删除</a>
             </div>
-            <s:form action="brand_management.action" method="post">
+            <s:form action="brand_management" method="post">
                 <table class="table table-striped table-condensed">
                     <thead>
                     <tr>

@@ -1,16 +1,18 @@
 package org.msdai.eerigo.core.utils;
 
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ser.StdSerializerProvider;
 import org.codehaus.jackson.map.ser.std.NullSerializer;
 import org.codehaus.jackson.type.TypeReference;
 
-import java.io.IOException;
+
 import java.io.Reader;
-import java.lang.reflect.Type;
+
 import java.text.SimpleDateFormat;
+
+import java.io.IOException;
 
 /**
  * Created with IntelliJ IDEA.
