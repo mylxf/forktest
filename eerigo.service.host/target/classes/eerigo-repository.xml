@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+    <bean id="categoryRepository" class="org.msdai.eerigo.service.repositoryimpl.mongodb.CategoryMongoDBRepository">
+        <constructor-arg ref="mongoDBRepositoryContext"/>
+    </bean>
+    <bean id="brandRepository" class="org.msdai.eerigo.service.repositoryimpl.mongodb.BrandMongoDBRepository">
+        <constructor-arg ref="mongoDBRepositoryContext"/>
+    </bean>
+    <bean id="countryRepository" class="org.msdai.eerigo.service.repositoryimpl.mongodb.CountryMongoDBRepository">
+        <constructor-arg ref="mongoDBRepositoryContext"/>
+    </bean>
+    <bean id="productRepository" class="org.msdai.eerigo.service.repositoryimpl.mongodb.ProductMongoDBRepository">
+        <constructor-arg ref="mongoDBRepositoryContext"/>
+    </bean>
+    <bean id="resourceRepository" class="org.msdai.eerigo.service.repositoryimpl.mongodb.ResourceMongoDBRepository">
+        <property name="fsOperations" ref="gridTemplate"/>
+    </bean>
+
+
+    <bean id="brandQueryRepository"
+          class="org.msdai.eerigo.service.repositoryimpl.mongodb.query.BrandQueryMongoDBRepository">
+        <constructor-arg index="0" value="${mongo.host}"/>
+        <constructor-arg index="1" value="${mongo.port}"/>
+        <constructor-arg index="2" value="${mongo.database}"/>
+    </bean>
+
+    <bean id="categoryQueryRepository"
+          class="org.msdai.eerigo.service.repositoryimpl.mongodb.query.CategoryQueryMongoDBRepository">
+        <constructor-arg index="0" value="${mongo.host}"/>
+        <constructor-arg index="1" value="${mongo.port}"/>
+        <constructor-arg index="2" value="${mongo.database}"/>
+    </bean>
+
+    <bean id="productQueryRepository"
+          class="org.msdai.eerigo.service.repositoryimpl.mongodb.query.ProductQueryMongoDBRepository">
+        <constructor-arg index="0" value="${mongo.host}"/>
+        <constructor-arg index="1" value="${mongo.port}"/>
+        <constructor-arg index="2" value="${mongo.database}"/>
+    </bean>
+</beans>

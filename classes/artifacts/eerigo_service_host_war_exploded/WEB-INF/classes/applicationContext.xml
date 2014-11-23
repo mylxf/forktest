@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+
+    <context:property-placeholder location="classpath:mongodb.properties"/>
+
+    <mongo:mongo id="mongo" host="${mongo.host}" port="${mongo.port}" write-concern="${mongo.write-concern}">
+        <mongo:options
+                connections-per-host="${mongo.connectionsPerHost}"
+                threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
+                connect-timeout="${mongo.connectTimeout}"
+                max-wait-time="${mongo.maxWaitTime}"
+                auto-connect-retry="${mongo.autoConnectRetry}"
+                socket-keep-alive="${mongo.socketKeepAlive}"
+                socket-timeout="${mongo.socketTimeout}"
+                write-number="1"
+                write-timeout="0"
+                write-fsync="true"/>
+    </mongo:mongo>
+
+    <mongo:db-factory id="mongoDbFactory" mongo-ref="mongo" dbname="${mongo.database}"/>
+    <mongo:mapping-converter id="converter" db-factory-ref="mongoDbFactory"/>
+
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg index="0" type="com.mongodb.Mongo" ref="mongo"/>
+        <constructor-arg index="1" type="java.lang.String" value="${mongo.database}"/>
+    </bean>
+
+    <bean id="gridTemplate" class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
+        <constructor-arg ref="mongoDbFactory"/>
+        <constructor-arg ref="converter"/>
+    </bean>
+
+    <bean id="mongoDBRepositoryContextSettings"
+          class="org.msdai.eerigo.service.repositoryimpl.DefaultMongoDBRepositoryContextSettings">
+        <constructor-arg ref="mongoTemplate"/>
+    </bean>
+
+    <bean id="mongoDBRepositoryContext"
+          class="org.msdai.eerigo.service.repositoryimpl.DefaultMongoDBRepositoryContext">
+        <constructor-arg ref="mongoDBRepositoryContextSettings"/>
+    </bean>
+
+</beans>

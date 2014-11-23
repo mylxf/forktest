@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+    <bean id="categoryDomainService" class="org.msdai.eerigo.service.domain.domainservice.CategoryDomainService">
+        <constructor-arg ref="categoryRepository"/>
+    </bean>
+    <bean id="brandDomainService" class="org.msdai.eerigo.service.domain.domainservice.BrandDomainService">
+        <constructor-arg ref="brandRepository"/>
+    </bean>
+    <bean id="countryDomainService" class="org.msdai.eerigo.service.domain.domainservice.CountryDomainService">
+        <constructor-arg ref="countryRepository"/>
+    </bean>
+    <bean id="productDomainService" class="org.msdai.eerigo.service.domain.domainservice.ProductDomainService">
+        <constructor-arg ref="productRepository"/>
+    </bean>
+</beans>
