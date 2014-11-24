@@ -1,5 +1,6 @@
 package org.msdai.eerigo.service.serviceinterface.servicecontract.action;
 
+import org.msdai.eerigo.core.OperatorResult;
 import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CountryDTO;
 
@@ -18,19 +19,19 @@ import java.util.List;
 public interface CountryService {
     @POST
     @Path("/addCountry")
-    void addCountry(CountryDTO countryDTO);
+    OperatorResult addCountry(CountryDTO countryDTO);
 
     @POST
     @Path("/modifyCountry")
-    boolean modifyCountry(CountryDTO countryDTO);
+    OperatorResult modifyCountry(CountryDTO countryDTO);
 
     @POST
     @Path("/removeCountry")
-    boolean removeCountry(String countryId);
+    OperatorResult removeCountry(String countryId);
 
     @POST
     @Path("/batchRemoveCountry")
-    boolean batchRemoveCountry(List<String> list);
+    OperatorResult batchRemoveCountry(List<String> list);
 
     @POST
     @Path("/getCountry")

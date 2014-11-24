@@ -1,5 +1,6 @@
 package org.msdai.eerigo.service.serviceimpl.action;
 
+import org.msdai.eerigo.core.OperatorResult;
 import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.domain.domainservice.CountryDomainService;
@@ -28,37 +29,36 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public void addCountry(CountryDTO countryDTO) {
-
-        //Country country = ConvertUtils.convert(countryDTO, Country.class);
-        //countryDomainService.addCountry(country);
-        System.out.print("ok");
+    public OperatorResult addCountry(CountryDTO countryDTO) {
+        Country country = ConvertUtils.convert(countryDTO, Country.class);
+        countryDomainService.addCountry(country);
+        return new OperatorResult(true);
     }
 
     @Override
-    public boolean modifyCountry(CountryDTO countryDTO) {
+    public OperatorResult modifyCountry(CountryDTO countryDTO) {
         Country country = ConvertUtils.convert(countryDTO, Country.class);
         countryDomainService.modifyCountry(country);
 
-        return true;
+        return new OperatorResult(true);
     }
 
     @Override
-    public boolean removeCountry(String countryId) {
+    public OperatorResult removeCountry(String countryId) {
         CountryDTO countryDTO = getCountry(countryId);
         //Country country = ConvertUtils.convert(countryDTO, Country.class);
         //countryDomainService.removeBrand(country);
 
-        return true;
+        return new OperatorResult(true);
     }
 
     @Override
-    public boolean batchRemoveCountry(List<String> list){
+    public OperatorResult batchRemoveCountry(List<String> list){
         for(String id : list){
             removeCountry(id);
         }
 
-        return true;
+        return new OperatorResult(true);
     }
 
     @Override

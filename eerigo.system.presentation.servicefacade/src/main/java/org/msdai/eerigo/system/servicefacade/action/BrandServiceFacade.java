@@ -1,13 +1,8 @@
 package org.msdai.eerigo.system.servicefacade.action;
 
-import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.PageResultDTO;
-
-import org.msdai.eerigo.service.serviceinterface.message.BrandQueryRequestMessage;
-
-import org.msdai.eerigo.core.service.RestClient;
-
 import org.msdai.eerigo.core.exception.EerigoRestClientException;
+import org.msdai.eerigo.core.service.RestClient;
+import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
 
 import java.util.List;
 
@@ -33,7 +28,7 @@ public class BrandServiceFacade {
         restClient.post("/removeBrand", brandId, null);
     }
 
-    public void batchRemoveBrand(List<String> list) throws EerigoRestClientException{
+    public void batchRemoveBrand(List<String> list) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/brand");
         restClient.post("/batchRemoveBrand", list, null);
     }

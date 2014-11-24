@@ -40,7 +40,7 @@ public class CountryAction extends BasePageAction {
         countryDTO.setCountryName(request.getParameter("model.countryName"));
         //countryDTO.setCountryFlag(null);
 
-        return (countryServiceFacade.addCountry(countryDTO)) ? SUCCESS : ERROR;
+        return (countryServiceFacade.addCountry(countryDTO).getResult()) ? SUCCESS : ERROR;
     }
 
     public String modifyCountry() throws Exception {
@@ -48,6 +48,6 @@ public class CountryAction extends BasePageAction {
         countryDTO.setId(request.getParameter("model.id"));
         countryDTO.setCountryName(request.getParameter("model.countryName"));
         //countryDTO.setCountryFlag(null);
-        return (countryServiceFacade.modifyCountry(countryDTO)) ? SUCCESS : ERROR;
+        return (countryServiceFacade.modifyCountry(countryDTO).getResult()) ? SUCCESS : ERROR;
     }
 }
