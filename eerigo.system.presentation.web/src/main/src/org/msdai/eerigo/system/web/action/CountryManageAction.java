@@ -25,12 +25,9 @@ public class CountryManageAction extends BasePageAction {
 
     @Override
     public String doExecute() throws Exception {
-        List<CountryDTO> result = countryServiceFacade.getCountries();
+        PagedResult pagedResult = countryServiceFacade.getCountries();
 
-        models = new ArrayList<CountryModel>();
-        for (CountryDTO countryDTO : result) {
-            models.add(ConvertUtils.convert(countryDTO, CountryModel.class));
-        }
+        models = (List<CountryModel>) pagedResult.getData();
 
         return SUCCESS;
     }

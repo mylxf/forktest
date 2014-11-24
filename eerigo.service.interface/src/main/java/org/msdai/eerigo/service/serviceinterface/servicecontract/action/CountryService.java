@@ -1,5 +1,6 @@
 package org.msdai.eerigo.service.serviceinterface.servicecontract.action;
 
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CountryDTO;
 
 import javax.ws.rs.Consumes;
@@ -21,15 +22,15 @@ public interface CountryService {
 
     @POST
     @Path("/modifyCountry")
-    void modifyCountry(CountryDTO countryDTO);
+    boolean modifyCountry(CountryDTO countryDTO);
 
     @POST
     @Path("/removeCountry")
-    void removeCountry(String countryId);
+    boolean removeCountry(String countryId);
 
     @POST
     @Path("/batchRemoveCountry")
-    void batchRemoveCountry(List<String> list);
+    boolean batchRemoveCountry(List<String> list);
 
     @POST
     @Path("/getCountry")
@@ -37,5 +38,5 @@ public interface CountryService {
 
     @POST
     @Path("/getCountries")
-    List<CountryDTO> getCountries();
+    PagedResult<CountryDTO> getCountries();
 }

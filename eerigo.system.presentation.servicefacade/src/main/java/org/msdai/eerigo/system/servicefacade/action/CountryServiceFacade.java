@@ -1,5 +1,6 @@
 package org.msdai.eerigo.system.servicefacade.action;
 
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.exception.EerigoRestClientException;
 import org.msdai.eerigo.core.service.RestClient;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CountryDTO;
@@ -10,24 +11,26 @@ import java.util.List;
  * Created by fengfeng on 14/11/15.
  */
 public class CountryServiceFacade {
-    public void addCountry(CountryDTO countryDTO) throws EerigoRestClientException {
+    public boolean addCountry(CountryDTO countryDTO) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/country");
-        restClient.post("/addCountry", countryDTO, CountryDTO.class);
+        restClient.post("/addCountry", countryDTO, null);
+
+        return true;
     }
 
-    public void modifyCountry(CountryDTO countryDTO) throws EerigoRestClientException {
+    public boolean modifyCountry(CountryDTO countryDTO) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/country");
-        restClient.post("/modifyCountry", countryDTO, null);
+        return restClient.post("/modifyCountry", countryDTO, null);
     }
 
-    public void removeCountry(String brandId) throws EerigoRestClientException {
+    public boolean removeCountry(String brandId) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/country");
-        restClient.post("/removeCountry", brandId, null);
+        return restClient.post("/removeCountry", brandId, null);
     }
 
-    public void batchRemoveCountry(List<String> list) throws EerigoRestClientException {
+    public boolean batchRemoveCountry(List<String> list) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/country");
-        restClient.post("/batchRemoveCountry", list, null);
+        return restClient.post("/batchRemoveCountry", list, null);
     }
 
     public CountryDTO getCountry(String id) throws EerigoRestClientException {
@@ -43,9 +46,9 @@ public class CountryServiceFacade {
         return new PageResultDTO<CountryDTO>(1, countryDTO1);*/
     }
 
-    public List<CountryDTO> getCountries() throws EerigoRestClientException {
+    public PagedResult getCountries() throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/country");
-        return restClient.post("/getCountries", null, List.class);
+        return restClient.post("/getCountries", null, PagedResult.class);
 
         /*
         List<CountryDTO> list = new ArrayList<CountryDTO>();

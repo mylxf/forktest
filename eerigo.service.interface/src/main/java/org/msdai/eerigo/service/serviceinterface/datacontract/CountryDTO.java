@@ -8,7 +8,11 @@ import org.msdai.eerigo.core.service.BaseDTO;
 public class CountryDTO extends BaseDTO {
     private String id;
     private String countryName;
-    private ResourceDTO countryFlag;
+    //private ResourceDTO countryFlag;
+
+    public CountryDTO() {
+
+    }
 
     public String getId() {
         return this.id;
@@ -26,11 +30,12 @@ public class CountryDTO extends BaseDTO {
         this.countryName = countryName;
     }
 
+    /*
     public ResourceDTO getCountryFlag() {
         return countryFlag;
     }
 
     public void setCountryFlag(ResourceDTO countryFlag) {
         this.countryFlag = countryFlag;
-    }
+    }*/
 }

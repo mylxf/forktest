@@ -12,7 +12,7 @@ import org.msdai.eerigo.service.domain.model.Resource;
  */
 public class Country extends AggregateRootBase{
     private String countryName;
-    private Resource countryFlag;
+    //private Resource countryFlag;
 
     public String getCountryName() {
         return countryName;
@@ -22,11 +22,12 @@ public class Country extends AggregateRootBase{
         this.countryName = countryName;
     }
 
+    /*
     public Resource getCountryFlag() {
         return countryFlag;
     }
 
     public void setCountryFlag(Resource countryFlag) {
         this.countryFlag = countryFlag;
-    }
+    }*/
 }

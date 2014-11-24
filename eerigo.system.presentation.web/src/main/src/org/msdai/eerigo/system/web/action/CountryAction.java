@@ -38,17 +38,16 @@ public class CountryAction extends BasePageAction {
     public String addCountry() throws Exception {
         CountryDTO countryDTO = new CountryDTO();
         countryDTO.setCountryName(request.getParameter("model.countryName"));
-        countryDTO.setCountryFlag(null);
-        countryServiceFacade.addCountry(countryDTO);
-        return SUCCESS;
+        //countryDTO.setCountryFlag(null);
+
+        return (countryServiceFacade.addCountry(countryDTO)) ? SUCCESS : ERROR;
     }
 
     public String modifyCountry() throws Exception {
         CountryDTO countryDTO = new CountryDTO();
         countryDTO.setId(request.getParameter("model.id"));
         countryDTO.setCountryName(request.getParameter("model.countryName"));
-        countryDTO.setCountryFlag(null);
-        countryServiceFacade.modifyCountry(countryDTO);
-        return SUCCESS;
+        //countryDTO.setCountryFlag(null);
+        return (countryServiceFacade.modifyCountry(countryDTO)) ? SUCCESS : ERROR;
     }
 }

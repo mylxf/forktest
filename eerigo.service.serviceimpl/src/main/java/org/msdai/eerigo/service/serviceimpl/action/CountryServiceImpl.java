@@ -1,5 +1,6 @@
 package org.msdai.eerigo.service.serviceimpl.action;
 
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.domain.domainservice.CountryDomainService;
 import org.msdai.eerigo.service.domain.domainservice.ProductDomainService;
@@ -28,28 +29,36 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public void addCountry(CountryDTO countryDTO) {
-        Country country = ConvertUtils.convert(countryDTO, Country.class);
-        countryDomainService.addCountry(country);
+
+        //Country country = ConvertUtils.convert(countryDTO, Country.class);
+        //countryDomainService.addCountry(country);
+        System.out.print("ok");
     }
 
     @Override
-    public void modifyCountry(CountryDTO countryDTO) {
+    public boolean modifyCountry(CountryDTO countryDTO) {
         Country country = ConvertUtils.convert(countryDTO, Country.class);
         countryDomainService.modifyCountry(country);
+
+        return true;
     }
 
     @Override
-    public void removeCountry(String countryId) {
+    public boolean removeCountry(String countryId) {
         CountryDTO countryDTO = getCountry(countryId);
         //Country country = ConvertUtils.convert(countryDTO, Country.class);
         //countryDomainService.removeBrand(country);
+
+        return true;
     }
 
     @Override
-    public void batchRemoveCountry(List<String> list){
+    public boolean batchRemoveCountry(List<String> list){
         for(String id : list){
             removeCountry(id);
         }
+
+        return true;
     }
 
     @Override
@@ -60,13 +69,21 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public List<CountryDTO> getCountries() {
-        List<CountryDTO> result = new ArrayList<CountryDTO>();
+    public PagedResult<CountryDTO> getCountries() {
+        PagedResult<CountryDTO> pagedResult = new PagedResult<CountryDTO>();
+
+        /*
+        CountryDTO countryDTO = new CountryDTO();
+        countryDTO.setId("1");
+        countryDTO.setCountryName("Japan");
+        pagedResult.add(countryDTO);
+        */
+
         List<Country> list = countryDomainService.getCountries();
         for (Country country : list) {
-            result.add(ConvertUtils.convert(country, CountryDTO.class));
+            pagedResult.add(ConvertUtils.convert(country, CountryDTO.class));
         }
 
-        return result;
+        return pagedResult;
     }
 }
