@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
-<form name="requimentLogin" action="category_opt.action?method=modifyCategory" method="post" id="f_requiment_login">
+<form name="requimentLogin" action="category_opt.action?method=<s:property value='method'/>" method="post" id="f_requiment_login">
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">

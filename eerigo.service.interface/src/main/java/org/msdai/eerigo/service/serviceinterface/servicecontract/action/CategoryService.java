@@ -1,5 +1,7 @@
 package org.msdai.eerigo.service.serviceinterface.servicecontract.action;
 
+import org.msdai.eerigo.core.OperatorResult;
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
 
 import javax.ws.rs.Consumes;
@@ -21,19 +23,19 @@ import java.util.List;
 public interface CategoryService {
     @POST
     @Path("/addCategory")
-    void addCategory(CategoryDTO categoryDTO);
+    OperatorResult addCategory(CategoryDTO categoryDTO);
 
     @POST
     @Path("/modifyCategory")
-    void modifyCategory(CategoryDTO categoryDTO);
+    OperatorResult modifyCategory(CategoryDTO categoryDTO);
 
     @POST
     @Path("/removeCategory")
-    void removeCategory(String categoryId);
+    OperatorResult removeCategory(String categoryId);
 
     @POST
     @Path("/batchRemoveCategory")
-    void batchRemoveCategory(List<String> list);
+    OperatorResult batchRemoveCategory(List<String> list);
 
     @POST
     @Path("/getCategory")
@@ -41,13 +43,5 @@ public interface CategoryService {
 
     @POST
     @Path("/getCategories")
-    List<CategoryDTO> getCategories();
-
-    @POST
-    @Path("/addSubcategory")
-    void addSubcategory(CategoryDTO categoryDTO, CategoryDTO subcategoryDTO);
-
-    @POST
-    @Path("/removeSubcategory")
-    void removeSubcategory(CategoryDTO categoryDTO, CategoryDTO subcategoryDTO);
+    PagedResult<CategoryDTO> getCategories();
 }

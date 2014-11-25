@@ -15,7 +15,7 @@
             <div class="bar-mod clearfix tl">
                 <input type="text" class="form-control dib" placeholder="Search">
                 <button type="submit" class="btn btn-default">搜索</button>
-                <a href="/category_management.action?method=addCategoryView" class="btn btn-success"><span
+                <a href="/category_opt" class="btn btn-success"><span
                         class="glyphicon glyphicon-plus"></span> 添加</a>
                 <a href="#" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
             </div>
@@ -79,7 +79,6 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <iframe src="/page/product/country_add.jsp"/>
 </div>
 </body>
 </html>

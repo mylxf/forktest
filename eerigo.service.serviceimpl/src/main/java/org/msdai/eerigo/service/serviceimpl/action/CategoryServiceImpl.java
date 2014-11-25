@@ -1,17 +1,15 @@
 package org.msdai.eerigo.service.serviceimpl.action;
 
+import org.msdai.eerigo.core.OperatorResult;
+import org.msdai.eerigo.core.PagedResult;
+import org.msdai.eerigo.core.utils.ConvertUtils;
+import org.msdai.eerigo.service.domain.domainservice.CategoryDomainService;
+import org.msdai.eerigo.service.domain.domainservice.ProductDomainService;
+import org.msdai.eerigo.service.domain.model.category.Category;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
 import org.msdai.eerigo.service.serviceinterface.servicecontract.action.CategoryService;
 
-import org.msdai.eerigo.service.domain.model.category.Category;
-
-import org.msdai.eerigo.service.domain.domainservice.ProductDomainService;
-import org.msdai.eerigo.service.domain.domainservice.CategoryDomainService;
-
-import org.msdai.eerigo.core.utils.ConvertUtils;
-
 import java.util.List;
-import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,29 +31,33 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void addCategory(CategoryDTO categoryDTO) {
+    public OperatorResult addCategory(CategoryDTO categoryDTO) {
         Category category = ConvertUtils.convert(categoryDTO, Category.class);
         categoryDomainService.addCategory(category);
+        return new OperatorResult(true);
     }
 
     @Override
-    public void modifyCategory(CategoryDTO categoryDTO) {
+    public OperatorResult modifyCategory(CategoryDTO categoryDTO) {
         Category category = ConvertUtils.convert(categoryDTO, Category.class);
         categoryDomainService.modifyCategory(category);
+        return new OperatorResult(true);
     }
 
     @Override
-    public void removeCategory(String categoryId) {
+    public OperatorResult removeCategory(String categoryId) {
         CategoryDTO categoryDTO = getCategory(categoryId);
         //检查该类别下属是否有其他类别，或者有父类别
+        return new OperatorResult(true);
 
     }
 
     @Override
-    public void batchRemoveCategory(List<String> list){
-        for(String id : list){
+    public OperatorResult batchRemoveCategory(List<String> list) {
+        for (String id : list) {
             removeCategory(id);
         }
+        return new OperatorResult(true);
     }
 
     @Override
@@ -68,28 +70,13 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<CategoryDTO> getCategories() {
-        List<CategoryDTO> result = new ArrayList<CategoryDTO>();
+    public PagedResult<CategoryDTO> getCategories() {
+        PagedResult<CategoryDTO> pagedResult = new PagedResult<CategoryDTO>();
+
         List<Category> categories = categoryDomainService.getCategories();
         for (Category category : categories) {
-            result.add(ConvertUtils.convert(category, CategoryDTO.class));
+            pagedResult.add(ConvertUtils.convert(category, CategoryDTO.class));
         }
-        return result;
-    }
-
-    @Override
-    public void addSubcategory(CategoryDTO categoryDTO, CategoryDTO subcategoryDTO) {
-        Category category = categoryDomainService.getCategory(categoryDTO.getId());
-        Category subcategory = categoryDomainService.getCategory(subcategoryDTO.getId());
-        category.addSubcategory(subcategory);
-        categoryDomainService.modifyCategory(category);
-    }
-
-    @Override
-    public void removeSubcategory(CategoryDTO categoryDTO, CategoryDTO subcategoryDTO) {
-        Category category = categoryDomainService.getCategory(categoryDTO.getId());
-        Category subcategory = categoryDomainService.getCategory(subcategoryDTO.getId());
-        category.removeSubcategory(subcategory);
-        categoryDomainService.modifyCategory(category);
+        return pagedResult;
     }
 }

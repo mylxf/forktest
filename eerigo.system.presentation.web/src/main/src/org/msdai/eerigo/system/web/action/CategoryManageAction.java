@@ -24,17 +24,10 @@ public class CategoryManageAction extends BaseAction {
 
     @Override
     public String doExecute() throws Exception {
-        PagedResult<CategoryDTO> result = categoryQueryServiceFacade.queryCategories(0, 20);
+        PagedResult pagedResult = categoryQueryServiceFacade.queryCategories(0, 20);
 
-        models = new ArrayList<CategoryModel>();
-        for (CategoryDTO categoryDTO : result.getData()) {
-            models.add(ConvertUtils.convert(categoryDTO, CategoryModel.class));
-        }
+        models = (List<CategoryModel>) pagedResult.getData();
 
         return SUCCESS;
-    }
-
-    public String addCategoryView() throws Exception {
-        return "addCategoryView";
     }
 }

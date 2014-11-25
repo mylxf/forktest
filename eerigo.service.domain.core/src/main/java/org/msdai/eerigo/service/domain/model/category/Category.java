@@ -18,9 +18,8 @@ public class Category extends AggregateRootBase {
      */
     private String categoryName;
 
-    /**
-     * 子类别
-     */
+    /*
+
     private List<Category> subcategories;
 
     public String getCategoryName() {
@@ -39,9 +38,6 @@ public class Category extends AggregateRootBase {
         this.subcategories = subcategories;
     }
 
-    /**
-     * 添加子类别
-     */
     public void addSubcategory(Category category) {
         if (subcategories == null) {
             subcategories = new ArrayList<Category>();
@@ -51,9 +47,6 @@ public class Category extends AggregateRootBase {
         }
     }
 
-    /**
-     * 移除子类别
-     * */
     public void removeSubcategory(Category category) {
         if (subcategories == null) {
             subcategories = new ArrayList<Category>();
@@ -62,4 +55,5 @@ public class Category extends AggregateRootBase {
             subcategories.remove(category);
         }
     }
+    */
 }

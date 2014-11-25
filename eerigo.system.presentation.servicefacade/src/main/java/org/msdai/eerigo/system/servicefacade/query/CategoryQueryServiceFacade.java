@@ -12,7 +12,7 @@ import java.util.List;
  * Created by fengfeng on 14/11/15.
  */
 public class CategoryQueryServiceFacade {
-    public PagedResult<CategoryDTO> queryCategories(Integer index, Integer size) throws EerigoRestClientException {
+    public PagedResult queryCategories(Integer index, Integer size) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/categoryQuery");
         CategoryQueryRequestMessage request = new CategoryQueryRequestMessage();
         request.setIndex(index);

@@ -1,15 +1,10 @@
 package org.msdai.eerigo.service.repositoryimpl.mongodb;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
-import com.mongodb.WriteConcern;
 import org.msdai.eerigo.service.domain.model.brand.Brand;
 import org.msdai.eerigo.service.domain.repository.BrandRepository;
 import org.msdai.eerigo.service.repositoryimpl.MongoDBRepository;
 import org.msdai.eerigo.service.repositoryimpl.MongoDBRepositoryContext;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 
 import java.util.List;
 

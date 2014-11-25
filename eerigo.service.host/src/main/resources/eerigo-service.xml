@@ -51,6 +51,14 @@
             <ref bean="jaxbProvider"/>
         </jaxrs:providers>
     </jaxrs:server>
+    <jaxrs:server id="product" address="/menuCategory">
+        <jaxrs:serviceBeans>
+            <ref bean="productService"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jaxbProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
     <jaxrs:server id="brandQuery" address="/brandQuery">
         <jaxrs:serviceBeans>
             <ref bean="brandQueryService"/>
@@ -79,6 +87,11 @@
     <bean id="categoryService" class="org.msdai.eerigo.service.serviceimpl.action.CategoryServiceImpl">
         <property name="categoryDomainService" ref="categoryDomainService"/>
         <property name="productDomainService" ref="productDomainService"/>
+    </bean>
+
+    <bean id="menuCategoryService" class="org.msdai.eerigo.service.serviceimpl.action.MenuCategoryServiceImpl">
+        <property name="categoryDomainService" ref="categoryDomainService"/>
+        <property name="menuCategoryDomainService" ref="menuCategoryDomainService"/>
     </bean>
 
     <bean id="countryService" class="org.msdai.eerigo.service.serviceimpl.action.CountryServiceImpl">

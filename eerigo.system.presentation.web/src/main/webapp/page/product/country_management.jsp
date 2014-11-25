@@ -20,7 +20,7 @@
         <div class="col-md-9">
             <!--正文-->
             <div class="bar-mod clearfix tl">
-                <a href="/country_opt" class="btn btn-success"><span
+                <a href="#" onclick="javascript:common_to_view('/country_opt','dialog-form','产地维护',800,450);" class="btn btn-success"><span
                         class="glyphicon glyphicon-plus"></span>添加</a>
                 <a href="#" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
             </div>
@@ -53,8 +53,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <iframe src="/page/product/country_add.jsp" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"/>
+<div class="modal fade" id="dialog-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 </div>
 
 </body>

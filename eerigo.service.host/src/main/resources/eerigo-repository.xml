@@ -4,6 +4,9 @@
     <bean id="categoryRepository" class="org.msdai.eerigo.service.repositoryimpl.mongodb.CategoryMongoDBRepository">
         <constructor-arg ref="mongoDBRepositoryContext"/>
     </bean>
+    <bean id="menuCategoryRepository" class="org.msdai.eerigo.service.repositoryimpl.mongodb.MenuCategoryMongoDBRepository">
+        <constructor-arg ref="mongoDBRepositoryContext"/>
+    </bean>
     <bean id="brandRepository" class="org.msdai.eerigo.service.repositoryimpl.mongodb.BrandMongoDBRepository">
         <constructor-arg ref="mongoDBRepositoryContext"/>
     </bean>

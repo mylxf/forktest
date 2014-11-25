@@ -4,6 +4,9 @@
     <bean id="categoryDomainService" class="org.msdai.eerigo.service.domain.domainservice.CategoryDomainService">
         <constructor-arg ref="categoryRepository"/>
     </bean>
+    <bean id="menuCategoryDomainService" class="org.msdai.eerigo.service.domain.domainservice.MenuCategoryDomainService">
+        <constructor-arg ref="menuCategoryRepository"/>
+    </bean>
     <bean id="brandDomainService" class="org.msdai.eerigo.service.domain.domainservice.BrandDomainService">
         <constructor-arg ref="brandRepository"/>
     </bean>

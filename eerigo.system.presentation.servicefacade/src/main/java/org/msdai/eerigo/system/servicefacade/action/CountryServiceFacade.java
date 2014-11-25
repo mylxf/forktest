@@ -35,27 +35,10 @@ public class CountryServiceFacade {
     public CountryDTO getCountry(String id) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/country");
         return restClient.post("/getCountry", id, CountryDTO.class);
-
-        /*
-        CountryDTO countryDTO1 = new CountryDTO();
-        countryDTO1.setId(id);
-        countryDTO1.setCountryName("Japan");
-        countryDTO1.setCountryFlag(null);
-
-        return new PageResultDTO<CountryDTO>(1, countryDTO1);*/
     }
 
     public PagedResult getCountries() throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/country");
         return restClient.post("/getCountries", null, PagedResult.class);
-
-        /*
-        List<CountryDTO> list = new ArrayList<CountryDTO>();
-        CountryDTO countryDTO1 = new CountryDTO();
-        countryDTO1.setId("1");
-        countryDTO1.setCountryName("Japan");
-        countryDTO1.setCountryFlag(null);
-        list.add(countryDTO1);
-        return new PageResultDTO<List<CountryDTO>>(list.size(), list);*/
     }
 }

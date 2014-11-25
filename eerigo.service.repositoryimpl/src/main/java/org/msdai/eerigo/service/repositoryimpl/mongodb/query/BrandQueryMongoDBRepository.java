@@ -1,17 +1,12 @@
 package org.msdai.eerigo.service.repositoryimpl.mongodb.query;
 
+import com.mongodb.*;
 import org.msdai.eerigo.core.PagedResult;
-
+import org.msdai.eerigo.core.exception.EerigoException;
+import org.msdai.eerigo.service.query.repository.BrandQueryRepository;
+import org.msdai.eerigo.service.repositoryimpl.MongoDBQueryRepository;
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
 import org.msdai.eerigo.service.serviceinterface.message.BrandQueryRequestMessage;
-
-import org.msdai.eerigo.service.query.repository.BrandQueryRepository;
-
-import org.msdai.eerigo.service.repositoryimpl.MongoDBQueryRepository;
-
-import org.msdai.eerigo.core.exception.EerigoException;
-
-import com.mongodb.*;
 
 /**
  * Created with IntelliJ IDEA.

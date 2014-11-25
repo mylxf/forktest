@@ -3,7 +3,6 @@ package org.msdai.eerigo.system.web.action;
 import org.msdai.eerigo.core.BasePageAction;
 import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
-
 import org.msdai.eerigo.system.servicefacade.action.CategoryServiceFacade;
 import org.msdai.eerigo.system.web.model.CategoryModel;
 
@@ -28,23 +27,24 @@ public class CategoryAction extends BasePageAction {
             if (category != null) {
                 model = ConvertUtils.convert(category, CategoryModel.class);
             }
+            method = "modifyCategory";
+        } else {
+            method = "addCategory";
         }
 
-        return "optCountryView";
+        return "optCategoryView";
     }
 
-    public String addCountry() throws Exception {
+    public String addCategory() throws Exception {
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setCategoryName(request.getParameter("model.categoryName"));
-        categoryServiceFacade.addCategory(categoryDTO);
-        return SUCCESS;
+        return (categoryServiceFacade.addCategory(categoryDTO).getResult()) ? SUCCESS : ERROR;
     }
 
-    public String modifyCountry() throws Exception {
+    public String modifyCategory() throws Exception {
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setId(request.getParameter("model.id"));
         categoryDTO.setCategoryName(request.getParameter("model.categoryName"));
-        categoryServiceFacade.modifyCategory(categoryDTO);
-        return SUCCESS;
+        return (categoryServiceFacade.modifyCategory(categoryDTO).getResult()) ? SUCCESS : ERROR;
     }
 }
