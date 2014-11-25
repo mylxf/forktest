@@ -13,7 +13,7 @@ hs_err_pid*
 
 .idea
 target
-classes
+/classes
 eerigo.core/eerigo.core.iml
 eerigo.service.adapter/eerigo.service.adapter.iml
 eerigo.service.domain.core/eerigo.service.domain.core.iml
@@ -28,3 +28,5 @@ eerigo.website.presentation.servicefacade/eerigo.website.presentation.servicefac
 eerigo.website.presentation.web/eerigo.website.presentation.web.iml
 eerigo.iml
 eerigo.service.query.repository/eerigo.service.query.repository.iml
+/lib
+/target
