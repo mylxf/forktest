@@ -27,7 +27,7 @@
             <ref bean="jaxbProvider"/>
         </jaxrs:providers>
     </jaxrs:server>
-    <jaxrs:server id="brand" address="/country">
+    <jaxrs:server id="country" address="/country">
         <jaxrs:serviceBeans>
             <ref bean="countryService"/>
         </jaxrs:serviceBeans>
