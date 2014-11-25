@@ -12,6 +12,8 @@
 hs_err_pid*
 
 .idea
+target
+classes
 eerigo.core/eerigo.core.iml
 eerigo.service.adapter/eerigo.service.adapter.iml
 eerigo.service.domain.core/eerigo.service.domain.core.iml

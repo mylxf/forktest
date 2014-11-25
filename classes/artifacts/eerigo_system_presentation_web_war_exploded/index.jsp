@@ -15,14 +15,6 @@
 
 <div class="container bs-docs-container">
     <div class="row">
-        <div class="col-md-12">
-            <ol class="breadcrumb">
-                <li class="active">首页</li>
-            </ol>
-        </div>
-    </div>
-
-    <div class="row">
         <jsp:include page="/page/menu.jsp"/>
         <div class="col-md-9">
             <!--正文-->
