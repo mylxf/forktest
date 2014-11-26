@@ -7,11 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<script src="${pageContext.request.contextPath}/js/product/country.js"></script>
 
 <html>
 <head>
     <title>产地管理</title>
+    <script src="${pageContext.request.contextPath}/js/product/country.js"></script>
 </head>
 <body>
 <jsp:include page="/page/header.jsp"/>
@@ -34,7 +34,7 @@
                     <th><input type="checkbox" onclick="selectAll(this);"/></th>
                     <th>#</th>
                     <th>产地</th>
-                    <th></th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>

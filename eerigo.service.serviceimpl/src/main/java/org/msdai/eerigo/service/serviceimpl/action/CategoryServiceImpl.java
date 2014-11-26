@@ -46,10 +46,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public OperatorResult removeCategory(String categoryId) {
-        CategoryDTO categoryDTO = getCategory(categoryId);
+        Category category = categoryDomainService.getCategory(categoryId);
+        categoryDomainService.removeCategory(category);
         //检查该类别下属是否有其他类别，或者有父类别
         return new OperatorResult(true);
-
     }
 
     @Override
