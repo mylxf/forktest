@@ -24,7 +24,7 @@
             <div class="bar-mod clearfix tl">
                 <!--<a href="#" onclick="javascript:common_to_view('/country_opt','dialog-form','产地维护',800,450);" class="btn btn-success"><span
                         class="glyphicon glyphicon-plus"></span>添加</a>-->
-                <a href="/country_opt" class="btn btn-success" target="_blank"><span
+                <a href="${pageContext.request.contextPath}/page/product/country_opt.action" class="btn btn-success" target="_blank"><span
                         class="glyphicon glyphicon-plus"></span>添加</a>
                 <a href="#" onclick="javascript:batchDelCountry();" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
             </div>
