@@ -1,7 +1,6 @@
 package org.msdai.eerigo.service.repositoryimpl.mongodb.query;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
+import com.mongodb.*;
 import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.exception.EerigoException;
 import org.msdai.eerigo.service.query.repository.CategoryQueryRepository;
@@ -33,8 +32,31 @@ public class CategoryQueryMongoDBRepository extends MongoDBQueryRepository imple
 
     @Override
     public PagedResult<CategoryDTO> queryCategories(CategoryQueryRequestMessage categoryQueryRequestMessage) {
-        return null;
+        int index = categoryQueryRequestMessage.getIndex();
+        int size = categoryQueryRequestMessage.getSize();
+        PagedResult<CategoryDTO> result = new PagedResult<CategoryDTO>();
+        QueryBuilder queryBuilder = QueryBuilder.start();
+        DBObject query = queryBuilder.get();
+        long count = categoryCollection.count(query);
+        if (count > 0) {
+            DBCursor cursor = categoryCollection.find(query).skip(index * size).limit(size);
+            while (cursor.hasNext()) {
+                result.add(transferCategoryDTO(cursor.next()));
+            }
+        }
+        return result;
     }
 
+    private CategoryDTO transferCategoryDTO(DBObject object) {
+        if (object == null) {
+            return null;
+        }
+        String id = String.valueOf(object.get("_id"));
+        String name = String.valueOf(object.get("categoryName"));
+        CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setId(id);
+        categoryDTO.setCategoryName(name);
+        return categoryDTO;
+    }
 
 }

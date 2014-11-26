@@ -17,12 +17,12 @@
                 <button type="submit" class="btn btn-default">搜索</button>
                 <a href="/category_opt" class="btn btn-success"><span
                         class="glyphicon glyphicon-plus"></span> 添加</a>
-                <a href="#" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
+                <a href="#" onclick="javascript:batchDelCategory();" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
             </div>
             <table class="table table-striped table-condensed">
                 <thead>
                 <tr>
-                    <th><input type="checkbox"/></th>
+                    <th><input type="checkbox" onclick="selectAll(this);"/></th>
                     <th>#</th>
                     <th>类别名称</th>
                     <th></th>
@@ -31,11 +31,10 @@
                 <tbody>
                     <s:iterator value="models" status="index">
                         <tr>
-                            <th><input id="chk_<s:property value="id"/>" type="checkbox"/></th>
+                            <th><input id="chk_<s:property value="id"/>" type="checkbox" name="chk_id" /></th>
                             <td><s:property value="id"/></td>
                             <td><s:property value="categoryName"/></td>
                             <td>
-                                <button id="btnDel_<s:property value="id"/>" type="button" class="btn btn-danger btn-xs">删除</button>
                                 <button id="btnEdit_<s:property value="id"/>" type="button" class="btn btn-success btn-xs">编辑</button>
                             </td>
                         </tr>

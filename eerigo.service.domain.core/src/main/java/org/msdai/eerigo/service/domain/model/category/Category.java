@@ -18,10 +18,6 @@ public class Category extends AggregateRootBase {
      */
     private String categoryName;
 
-    /*
-
-    private List<Category> subcategories;
-
     public String getCategoryName() {
         return categoryName;
     }
@@ -29,6 +25,10 @@ public class Category extends AggregateRootBase {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+
+    /*
+
+    private List<Category> subcategories;
 
     public List<Category> getSubcategories() {
         return subcategories;

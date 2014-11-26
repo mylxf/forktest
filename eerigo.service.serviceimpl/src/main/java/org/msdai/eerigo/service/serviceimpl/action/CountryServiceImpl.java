@@ -45,9 +45,8 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public OperatorResult removeCountry(String countryId) {
-        CountryDTO countryDTO = getCountry(countryId);
-        //Country country = ConvertUtils.convert(countryDTO, Country.class);
-        //countryDomainService.removeBrand(country);
+        Country country = countryDomainService.getCountry(countryId);
+        countryDomainService.removeCountry(country);
 
         return new OperatorResult(true);
     }

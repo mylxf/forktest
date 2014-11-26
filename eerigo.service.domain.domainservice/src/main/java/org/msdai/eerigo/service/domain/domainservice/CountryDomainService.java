@@ -20,7 +20,7 @@ public class CountryDomainService {
     }
 
     public Country getCountry(String id) {
-        return countryRepository.find(id);
+        return countryRepository.find(id.replace("\"",""));
     }
 
     public List<Country> getCountries() {
@@ -49,7 +49,7 @@ public class CountryDomainService {
         }
     }
 
-    public boolean removeBrand(Country country) {
+    public boolean removeCountry(Country country) {
         try {
             countryRepository.delete(country);
             countryRepository.getContext().commit();

@@ -6,6 +6,9 @@ import org.msdai.eerigo.service.serviceinterface.datacontract.CountryDTO;
 import org.msdai.eerigo.system.servicefacade.action.CountryServiceFacade;
 import org.msdai.eerigo.system.web.model.CountryModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by fengfeng on 14/11/17.
  */
@@ -49,5 +52,17 @@ public class CountryAction extends BasePageAction {
         countryDTO.setCountryName(request.getParameter("model.countryName"));
         //countryDTO.setCountryFlag(null);
         return (countryServiceFacade.modifyCountry(countryDTO).getResult()) ? SUCCESS : ERROR;
+    }
+
+    public String batchDelCountry() throws Exception {
+        String idList = request.getParameter("id_list");
+        List<String> list = new ArrayList<String>();
+        String[] strings = idList.split("\\|");
+
+        for (int i = 0; i < strings.length; i++) {
+            list.add(strings[i]);
+        }
+
+        return (countryServiceFacade.batchRemoveCountry(list).getResult()) ? SUCCESS : ERROR;
     }
 }

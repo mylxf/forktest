@@ -19,11 +19,11 @@
         <div class="modal-body">
             <div class="form-group">
                 <label>类别</label>
-                <input type="text" class="form-control" name="model.categoryName" value="<s:property value='categoryName'/>" />
+                <input type="text" class="form-control" name="model.categoryName" value="<s:property value='model.categoryName'/>" />
             </div>
         </div>
         <div class="modal-footer">
-            <input id="hiddenCategoryId" name="model.id" type="hidden" value="<s:property value='id'/>"/>
+            <input id="hiddenCategoryId" name="model.id" type="hidden" value="<s:property value='model.id'/>"/>
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             <input type="submit" class="btn btn-primary" value="保存"/>
         </div>
