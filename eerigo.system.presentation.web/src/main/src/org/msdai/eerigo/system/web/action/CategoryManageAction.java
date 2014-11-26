@@ -46,7 +46,7 @@ public class CategoryManageAction extends BaseAction {
         else
             index = 1;
 
-        PagedResult pagedResult = categoryQueryServiceFacade.queryCategories(index, 1);
+        PagedResult pagedResult = categoryQueryServiceFacade.queryCategories(index, 20);
 
         models = (List<CategoryModel>) pagedResult.getData();
 
