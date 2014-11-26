@@ -10,6 +10,7 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/global.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 <script src="${pageContext.request.contextPath}/js/global.js"></script>

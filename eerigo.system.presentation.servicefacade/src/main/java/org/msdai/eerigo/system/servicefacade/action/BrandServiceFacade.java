@@ -15,7 +15,7 @@ import java.util.List;
 public class BrandServiceFacade {
     public void addBrand(BrandDTO brandDTO) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/brand");
-        restClient.post("/addBrand", brandDTO, null);
+        restClient.post("/addBrand", brandDTO, String.class);
     }
 
     public void modifyBrand(BrandDTO brandDTO) throws EerigoRestClientException {

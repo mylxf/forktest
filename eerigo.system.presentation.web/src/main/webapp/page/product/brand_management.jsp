@@ -55,38 +55,9 @@
             </s:form>
         </div>
     </div>
-
 </div>
-
-<%--<s:form action="brand_management.action" method="post">--%>
-<%--<div class="container bs-docs-container">--%>
-<%--<div class="row">--%>
-<%--<jsp:include page="/page/menu.jsp"/>--%>
-<%--<div class="col-md-9">--%>
-<%--<!--正文-->--%>
-<%--<div class="bar-mod clearfix tl">--%>
-<%--<input type="text" class="form-control dib" placeholder="Search">--%>
-<%--<button type="submit" class="btn btn-default">搜索</button>--%>
-<%--<a href="#" class="btn btn-success" data-toggle="modal"><span--%>
-<%--class="glyphicon glyphicon-plus"--%>
-<%--onclick="common_to_view('consumer.action?method=add','div_f_view','新增品牌',800,450)"></span>--%>
-<%--添加</a>--%>
-<%--<a href="#" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>--%>
-<%--</div>--%>
-
-<%--<ul class="pagination">--%>
-<%--<li class="disabled"><a href="#">«</a></li>--%>
-<%--<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>--%>
-<%--<li><a href="#">2</a></li>--%>
-<%--<li><a href="#">3</a></li>--%>
-<%--<li><a href="#">4</a></li>--%>
-<%--<li><a href="#">5</a></li>--%>
-<%--<li><a href="#">»</a></li>--%>
-<%--</ul>--%>
-<%--<!--正文 end-->--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</s:form>--%>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <jsp:include page="/page/product/brand_save.jsp"/>
+</div>
 </body>
 </html>

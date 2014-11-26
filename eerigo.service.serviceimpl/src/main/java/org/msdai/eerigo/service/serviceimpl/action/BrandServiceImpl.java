@@ -30,9 +30,10 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public void addBrand(BrandDTO brandDTO) {
+    public String addBrand(BrandDTO brandDTO) {
         Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
         brandDomainService.addBrand(brand);
+        return "";
     }
 
     @Override

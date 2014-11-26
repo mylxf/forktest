@@ -5,6 +5,9 @@
 <struts>
     <constant name="struts.devMode" value="true"/>
     <package name="default" extends="struts-default">
+        <global-results>
+            <result name="showAlert">/page/alert.jsp</result>
+        </global-results>
         <action name="index" class="org.msdai.eerigo.system.web.action.IndexAction">
             <result name="index">/index.jsp</result>
         </action>
@@ -12,8 +15,8 @@
             <result name="success">/page/product/brand_management.jsp</result>
         </action>
 
-        <action name="brand" class="org.msdai.eerigo.system.web.action.BrandAction">
-            <result name="add">/page/product/brand_save.jsp</result>
+        <action name="brand_save" class="org.msdai.eerigo.system.web.action.BrandAction">
+            <result name="success"></result>
         </action>
 
         <action name="category_management" class="org.msdai.eerigo.system.web.action.CategoryManageAction">

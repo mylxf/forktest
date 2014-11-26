@@ -27,22 +27,6 @@ public class BrandQueryServiceImpl implements BrandQueryService {
 
     @Override
     public PagedResult<BrandDTO> queryBrands(BrandQueryRequestMessage brandQueryRequestMessage) {
-        //return brandQueryRepository.queryBrands(brandQueryRequestMessage);
-        List<BrandDTO> list = new ArrayList<BrandDTO>();
-        BrandDTO brandDTO1 = new BrandDTO();
-        brandDTO1.setId("1");
-        brandDTO1.setBrandName("brand1");
-
-        BrandDTO brandDTO2 = new BrandDTO();
-        brandDTO2.setId("2");
-        brandDTO2.setBrandName("brand2");
-
-        list.add(brandDTO1);
-        list.add(brandDTO2);
-        PagedResult<BrandDTO> result = new PagedResult<BrandDTO>();
-        result.addAll(list);
-        return result;
-
-
+        return brandQueryRepository.queryBrands(brandQueryRequestMessage);
     }
 }

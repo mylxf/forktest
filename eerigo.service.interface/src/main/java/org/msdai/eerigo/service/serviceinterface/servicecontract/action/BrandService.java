@@ -21,7 +21,7 @@ import java.util.List;
 public interface BrandService {
     @POST
     @Path("/addBrand")
-    void addBrand(BrandDTO brandDTO);
+    String addBrand(BrandDTO brandDTO);
 
     @POST
     @Path("/modifyBrand")
