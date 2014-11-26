@@ -6,6 +6,9 @@ import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
 import org.msdai.eerigo.system.servicefacade.action.CategoryServiceFacade;
 import org.msdai.eerigo.system.web.model.CategoryModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by fengfeng on 14/11/18.
  */
@@ -46,5 +49,17 @@ public class CategoryAction extends BasePageAction {
         categoryDTO.setId(request.getParameter("model.id"));
         categoryDTO.setCategoryName(request.getParameter("model.categoryName"));
         return (categoryServiceFacade.modifyCategory(categoryDTO).getResult()) ? SUCCESS : ERROR;
+    }
+
+    public String batchDelCategory() throws Exception {
+        String idList = request.getParameter("id_list");
+        List<String> list = new ArrayList<String>();
+        String[] strings = idList.split("\\|");
+
+        for (int i = 0; i < strings.length; i++) {
+            list.add(strings[i]);
+        }
+
+        return (categoryServiceFacade.batchRemoveCategory(list).getResult()) ? SUCCESS : ERROR;
     }
 }

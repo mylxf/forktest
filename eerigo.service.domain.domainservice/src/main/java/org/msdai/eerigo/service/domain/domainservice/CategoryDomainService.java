@@ -48,4 +48,15 @@ public class CategoryDomainService {
             return false;
         }
     }
+
+    public boolean removeCategory(Category category){
+        try {
+            categoryRepository.delete(category);
+            categoryRepository.getContext().commit();
+            return true;
+        } catch (EerigoRepositoryConcurrentModificationException e) {
+            categoryRepository.getContext().rollback();
+            return false;
+        }
+    }
 }

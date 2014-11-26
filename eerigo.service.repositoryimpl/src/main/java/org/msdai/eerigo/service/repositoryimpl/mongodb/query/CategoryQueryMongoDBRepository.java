@@ -44,6 +44,8 @@ public class CategoryQueryMongoDBRepository extends MongoDBQueryRepository imple
                 result.add(transferCategoryDTO(cursor.next()));
             }
         }
+        result.setTotalPages((int)count);
+
         return result;
     }
 

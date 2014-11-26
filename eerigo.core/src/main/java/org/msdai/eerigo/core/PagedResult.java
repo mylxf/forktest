@@ -28,6 +28,7 @@ public class PagedResult<T> implements Collection<T>, Iterable<T> {
     public int getTotalPages() {
         return totalPages;
     }
+    public void setTotalPages(int totalPages){this.totalPages = totalPages;}
 
     public int getPageSize() {
         return pageSize;
