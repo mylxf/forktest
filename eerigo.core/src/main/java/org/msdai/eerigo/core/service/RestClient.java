@@ -5,8 +5,6 @@ import org.msdai.eerigo.core.utils.EncryptUtils;
 
 import org.msdai.eerigo.core.exception.EerigoRestClientException;
 
-import org.codehaus.jackson.type.TypeReference;
-
 import org.springframework.util.StringUtils;
 
 import javax.ws.rs.core.MediaType;
@@ -55,7 +53,7 @@ public class RestClient {
             os.flush();
             handleWebResponse(conn);
             BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-            return (T)JsonUtils.parseJson(br, tClass);
+            return (T) JsonUtils.parseJson(br, tClass);
         } catch (Exception exception) {
             assert url != null;
             handleException(exception, url.toString());
@@ -133,7 +131,7 @@ public class RestClient {
         }
     }
 
-    public <T> T get(String relativeURL, Object[] objects, TypeReference<T> tClass) throws EerigoRestClientException {
+    public <T> T get(String relativeURL, Object[] objects, Class<T> tClass) throws EerigoRestClientException {
         StringBuilder param = new StringBuilder();
         for (Object obj : objects) {
             param.append("/");

@@ -13,3 +13,15 @@ function f_brand_save_submit() {
         });
     }
 }
+
+function f_brand_delete(id) {
+    $.ajax({
+        url: "brand.action?method=deleteBrand",
+        data: {'id': id},
+        type: 'post',
+        dataType: 'json',
+        success: function (result) {
+            location.reload();
+        }
+    });
+}

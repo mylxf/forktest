@@ -26,7 +26,7 @@ public class BrandManageAction extends BasePageAction {
 
     @Override
     public String doExecute() throws Exception {
-        PagedResult result = brandQueryServiceFacade.queryBrands(0, 20);
+        PagedResult result = brandQueryServiceFacade.queryBrands(0, Integer.MAX_VALUE);
         models = (List<BrandModel>) result.getData();
         return SUCCESS;
     }

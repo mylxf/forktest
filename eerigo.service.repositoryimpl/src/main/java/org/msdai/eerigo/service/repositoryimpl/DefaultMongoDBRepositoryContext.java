@@ -1,6 +1,7 @@
 package org.msdai.eerigo.service.repositoryimpl;
 
 
+import org.bson.types.ObjectId;
 import org.msdai.eerigo.core.exception.EerigoRepositoryConcurrentModificationException;
 import org.msdai.eerigo.service.domain.core.AggregateRoot;
 import org.msdai.eerigo.service.domain.core.AggregateRootBase;
@@ -95,6 +96,7 @@ public class DefaultMongoDBRepositoryContext implements MongoDBRepositoryContext
     public void commit() throws EerigoRepositoryConcurrentModificationException {
         synchronized (syncObject) {
             for (AggregateRootBase newObject : localNewCollection.get()) {
+                newObject.setId(ObjectId.get().toString());
                 mongoOperations.insert(newObject);
             }
 

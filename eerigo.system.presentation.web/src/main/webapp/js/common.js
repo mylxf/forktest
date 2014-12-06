@@ -1,29 +1,17 @@
-/**
- * 弹出div
- *
- * @param html
- *            div内容
- * @param title
- *            div标题
- * @param width
- *            div宽度
- * @param height
- *            div高度
- * @param zIndex
- *            div层叠
- */
-function popup(html, title, width, height) {
-    jQuery(html).dialog({
-        "title": title,
-        "width": width,
-        "height": height,
-        "z-index:": "8888",
-        "modal": true,
-        "resizable": false,
-        "dialogClass": "dialog",
-        helper: "clone",
-        close: function () {
-            $(this).html("");
+function open_view(method_parameter) {
+    var url = method_parameter;
+    $("#myModal").html("");
+    $.ajax({
+        url: url,
+        type: 'POST',
+        async: true,
+        dataType: 'html',
+        error: function () {
+            alert('error');
+        },
+        success: function (result) {
+            $("#myModal").html(result);
+            $("#myModal").modal('show');
         }
     });
 }
@@ -44,23 +32,7 @@ function close_div(div_view_id) {
  * @param begin_html
  * @param end_html
  */
-function replace_innerHTML(obj_id, html_value, begin_html, end_html, dom_id) {
-    if (html_value != null && html_value != '') {
-        var begin = html_value.indexOf(begin_html) + begin_html.length;
-        var end = html_value.indexOf(end_html);
-        if (begin != '' && end != '' && end > begin) {
-            var temp_value = html_value.substring(begin, end);
-            temp_value = temp_value.replace("pop_up", "normal");
-            document.getElementById(obj_id).innerHTML = temp_value;
-        } else {
-            document.getElementById(obj_id).innerHTML = html_value;
-        }
-        if (null != dom_id && $("#" + dom_id) != null) {
-            $("#" + dom_id).trigger("click");
-        }
-        f_tablerow_color();
-    }
-}
+
 
 /**
  * 读取错误信息

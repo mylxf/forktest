@@ -16,6 +16,11 @@ public abstract class AggregateRootBase implements AggregateRoot {
     protected String creDate;
 
     @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
     public String getId() {
         return id;
     }
@@ -46,7 +51,7 @@ public abstract class AggregateRootBase implements AggregateRoot {
     }
 
     public void setCreDate(String creDate) {
-         this.creDate = creDate;
+        this.creDate = creDate;
     }
 
     public void setCreUser(String creUser) {

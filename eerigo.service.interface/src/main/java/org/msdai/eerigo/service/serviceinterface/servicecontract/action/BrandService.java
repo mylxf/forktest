@@ -1,11 +1,11 @@
 package org.msdai.eerigo.service.serviceinterface.servicecontract.action;
 
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
+import org.msdai.eerigo.service.serviceinterface.datacontract.BrandCollectionDTO;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import org.msdai.eerigo.core.OperatorResult;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import java.util.List;
@@ -21,25 +21,25 @@ import java.util.List;
 public interface BrandService {
     @POST
     @Path("/addBrand")
-    String addBrand(BrandDTO brandDTO);
+    OperatorResult addBrand(BrandDTO brandDTO);
 
     @POST
     @Path("/modifyBrand")
-    void modifyBrand(BrandDTO brandDTO);
+    OperatorResult modifyBrand(BrandDTO brandDTO);
 
     @POST
     @Path("/removeBrand")
-    void removeBrand(String brandId);
+    OperatorResult removeBrand(String brandId);
 
     @POST
     @Path("/batchRemoveBrand")
-    void batchRemoveBrand(List<String> list);
+    OperatorResult batchRemoveBrand(List<String> list);
 
-    @POST
-    @Path("/getBrand")
-    BrandDTO getBrand(String id);
+    @GET
+    @Path("/getBrand/{brandId}")
+    BrandDTO getBrand(@PathParam("brandId") String brandId);
 
-    @POST
+    @GET
     @Path("/getBrands")
-    List<BrandDTO> getBrands();
+    BrandCollectionDTO getBrands();
 }

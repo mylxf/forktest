@@ -1,14 +1,18 @@
 package org.msdai.eerigo.service.serviceimpl.action;
 
+import org.msdai.eerigo.core.OperatorResult;
 import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.domain.domainservice.BrandDomainService;
 import org.msdai.eerigo.service.domain.domainservice.ProductDomainService;
 import org.msdai.eerigo.service.domain.model.brand.Brand;
+import org.msdai.eerigo.service.serviceinterface.datacontract.BrandCollectionDTO;
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
 import org.msdai.eerigo.service.serviceinterface.servicecontract.action.BrandService;
 
-import java.util.ArrayList;
+import org.apache.log4j.Logger;
+
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +21,8 @@ import java.util.List;
  * Time: 2:09 PM
  */
 public class BrandServiceImpl implements BrandService {
+
+    private static Logger logger = Logger.getLogger(BrandServiceImpl.class);
 
     private BrandDomainService brandDomainService;
     private ProductDomainService productDomainService;
@@ -30,48 +36,75 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public String addBrand(BrandDTO brandDTO) {
-        Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
-        brandDomainService.addBrand(brand);
-        return "1";
-    }
-
-    @Override
-    public void modifyBrand(BrandDTO brandDTO) {
-        Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
-        brandDomainService.modifyBrand(brand);
-    }
-
-    @Override
-    public void removeBrand(String brandId) {
-        BrandDTO brandDTO = getBrand(brandId);
-        Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
-
-        if (!productDomainService.existProducts(brand))
-            brandDomainService.removeBrand(brand);
-    }
-
-    @Override
-    public void batchRemoveBrand(List<String> list) {
-        for (String id : list) {
-            removeBrand(id);
+    public OperatorResult addBrand(BrandDTO brandDTO) {
+        try {
+            Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
+            brandDomainService.addBrand(brand);
+            return new OperatorResult(true);
+        } catch (Exception e) {
+            logger.fatal(e, e.getCause());
+            return new OperatorResult(false);
         }
     }
 
     @Override
-    public BrandDTO getBrand(String id) {
-        Brand brand = brandDomainService.getBrand(id);
-
-        return (brand != null) ? ConvertUtils.convert(brand, BrandDTO.class) : null;
+    public OperatorResult modifyBrand(BrandDTO brandDTO) {
+        try {
+            Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
+            brandDomainService.modifyBrand(brand);
+            return new OperatorResult(true);
+        } catch (Exception e) {
+            logger.fatal(e, e.getCause());
+            return new OperatorResult(false);
+        }
     }
 
     @Override
-    public List<BrandDTO> getBrands() {
+    public OperatorResult removeBrand(String brandId) {
+        try {
+            BrandDTO brandDTO = getBrand(brandId);
+            Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
+            if (!productDomainService.existProducts(brand)) {
+                brandDomainService.removeBrand(brand);
+            }
+            return new OperatorResult(true);
+        } catch (Exception e) {
+            logger.fatal(e, e.getCause());
+            return new OperatorResult(false);
+        }
+    }
+
+    @Override
+    public OperatorResult batchRemoveBrand(List<String> list) {
+        try {
+            for (String id : list) {
+                removeBrand(id);
+            }
+            return new OperatorResult(true);
+        } catch (Exception e) {
+            logger.fatal(e, e.getCause());
+            return new OperatorResult(false);
+        }
+    }
+
+    @Override
+    public BrandDTO getBrand(String brandId) {
+        Brand brand = brandDomainService.getBrand(brandId);
+        if (brand != null) {
+            return ConvertUtils.convert(brand, BrandDTO.class);
+        }
+        return null;
+    }
+
+    @Override
+    public BrandCollectionDTO getBrands() {
         List<BrandDTO> result = new ArrayList<BrandDTO>();
         List<Brand> list = brandDomainService.getBrands();
         for (Brand brand : list) {
             result.add(ConvertUtils.convert(brand, BrandDTO.class));
         }
-        return result;
+        BrandCollectionDTO r = new BrandCollectionDTO();
+        r.setBrands(result);
+        return r;
     }
 }

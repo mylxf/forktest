@@ -25,6 +25,7 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 
     private int flag;
     private String alertMsg;
+    protected String SHOWALERT = "showAlert";
     protected String method = "";
     protected HttpServletRequest request = null;
     protected HttpServletResponse response = null;

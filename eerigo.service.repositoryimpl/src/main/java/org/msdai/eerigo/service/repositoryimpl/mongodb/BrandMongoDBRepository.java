@@ -1,5 +1,6 @@
 package org.msdai.eerigo.service.repositoryimpl.mongodb;
 
+import org.bson.types.ObjectId;
 import org.msdai.eerigo.service.domain.model.brand.Brand;
 import org.msdai.eerigo.service.domain.repository.BrandRepository;
 import org.msdai.eerigo.service.repositoryimpl.MongoDBRepository;

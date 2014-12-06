@@ -6,6 +6,7 @@
 </head>
 <body>
 <jsp:include page="/page/header.jsp"/>
+<script src="${pageContext.request.contextPath}/js/product/brand.js"></script>
 <div class="container bs-docs-container">
     <div class="row">
         <jsp:include page="/page/menu.jsp"/>
@@ -13,8 +14,8 @@
             <div class="bar-mod clearfix tl">
                 <input type="text" class="form-control dib" placeholder="Search">
                 <button type="submit" class="btn btn-default">搜索</button>
-                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal"><span
-                        class="glyphicon glyphicon-plus"></span> 添加</a>
+                <a href="#" class="btn btn-success" onclick="open_view('brand.action?method=openView')"><span
+                        class="glyphicon glyphicon-plus"></span>添加</a>
                 <a href="#" class="btn btn-danger"><span class="glyphicon"></span> 全部删除</a>
             </div>
             <s:form action="brand_management" method="post">
@@ -36,8 +37,13 @@
                             <td><s:property value='brandName'/></td>
                             <td><s:property value='brandLogo'/></td>
                             <td>
-                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                <button type="button" class="btn btn-success btn-xs">编辑</button>
+                                <button type="button" class="btn btn-danger btn-xs"
+                                        onclick="f_brand_delete('<s:property value='id'/>')">删除
+                                </button>
+                                <button type="button" class="btn btn-success btn-xs"
+                                        onclick="open_view('brand.action?method=openView&id=<s:property value="id"/>')">
+                                    编辑
+                                </button>
                             </td>
                         </tr>
                     </s:iterator>
@@ -56,8 +62,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <jsp:include page="/page/product/brand_save.jsp"/>
-</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true"></div>
 </body>
 </html>

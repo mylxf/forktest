@@ -15,8 +15,8 @@
             <result name="success">/page/product/brand_management.jsp</result>
         </action>
 
-        <action name="brand_save" class="org.msdai.eerigo.system.web.action.BrandAction">
-            <result name="success"></result>
+        <action name="brand" class="org.msdai.eerigo.system.web.action.BrandAction">
+            <result name="openView">/page/product/brand_save.jsp</result>
         </action>
 
         <action name="category_management" class="org.msdai.eerigo.system.web.action.CategoryManageAction">

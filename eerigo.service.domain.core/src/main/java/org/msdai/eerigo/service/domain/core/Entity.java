@@ -10,6 +10,12 @@ import java.io.Serializable;
  * 实体接口
  */
 public interface Entity extends Serializable {
+
+    /**
+     * 实体的全局唯一标识设置
+     */
+    void setId(String id);
+
     /**
      * 获取实体的全局唯一标识
      */
