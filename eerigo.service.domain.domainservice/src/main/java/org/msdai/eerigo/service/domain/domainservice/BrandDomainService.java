@@ -22,7 +22,7 @@ public class BrandDomainService {
     }
 
     public Brand getBrand(String id) {
-        return brandRepository.find(id);
+        return brandRepository.find(id.replace("\"",""));
     }
 
     public List<Brand> getBrands() {

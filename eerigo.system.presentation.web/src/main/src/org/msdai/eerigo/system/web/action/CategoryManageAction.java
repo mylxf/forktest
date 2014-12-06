@@ -53,7 +53,7 @@ public class CategoryManageAction extends BaseAction {
         preIndex = (index <= 1) ? 1 : index - 1;
         //nextIndex = (index < pagedResult.getTotalPages()) ? index + 1 : pagedResult.getTotalPages();
         nextIndex = index + 1;
-        lastIndex = pagedResult.getTotalPages();
+        //lastIndex = pagedResult.getTotalPages();
 
         return SUCCESS;
     }

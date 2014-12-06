@@ -1,14 +1,13 @@
 package org.msdai.eerigo.system.web.action;
 
 import org.msdai.eerigo.core.BaseAction;
-
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
-
-import org.msdai.eerigo.system.web.model.BrandModel;
-
 import org.msdai.eerigo.system.servicefacade.action.BrandServiceFacade;
-
+import org.msdai.eerigo.system.web.model.BrandModel;
 import org.springframework.util.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -58,13 +57,22 @@ public class BrandAction extends BaseAction {
     }
 
     public String deleteBrand() throws Exception {
-        try {
-            String id = request.getParameter("id");
-            brandServiceFacade.removeBrand(id);
-            setAlertMsg("品牌删除成功");
-        } catch (Exception e) {
-            setAlertMsg("品牌删除失败");
+        String id = request.getParameter("id");
+        brandServiceFacade.removeBrand(id);
+        return SUCCESS;
+    }
+
+    public String batchDelBrand() throws Exception {
+        String idList = request.getParameter("id_list");
+        List<String> list = new ArrayList<String>();
+        String[] strings = idList.split("\\|");
+
+        for (int i = 0; i < strings.length; i++) {
+            list.add(strings[i]);
         }
-        return SHOWALERT;
+
+        brandServiceFacade.batchRemoveBrand(list);
+
+        return SUCCESS;
     }
 }

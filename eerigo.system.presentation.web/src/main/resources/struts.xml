@@ -11,30 +11,38 @@
         <action name="index" class="org.msdai.eerigo.system.web.action.IndexAction">
             <result name="index">/index.jsp</result>
         </action>
+
         <action name="brand_management" class="org.msdai.eerigo.system.web.action.BrandManageAction">
             <result name="success">/page/product/brand_management.jsp</result>
         </action>
-
         <action name="brand" class="org.msdai.eerigo.system.web.action.BrandAction">
             <result name="openView">/page/product/brand_save.jsp</result>
+            <result name="success">/page/product/brand_management.jsp</result>
+        </action>
+
+        <action name="country_management" class="org.msdai.eerigo.system.web.action.CountryManageAction">
+            <result name="success">/page/product/country_management.jsp</result>
+        </action>
+        <action name="country" class="org.msdai.eerigo.system.web.action.CountryAction">
+            <result name="openView">/page/product/country_save.jsp</result>
+            <result name="success">/page/product/country_management.jsp</result>
         </action>
 
         <action name="category_management" class="org.msdai.eerigo.system.web.action.CategoryManageAction">
             <result name="success">/page/product/category_management.jsp</result>
         </action>
-        <action name="category_opt" class="org.msdai.eerigo.system.web.action.CategoryAction">
-            <result name="optCategoryView">/page/product/category_save.jsp</result>
+        <action name="category" class="org.msdai.eerigo.system.web.action.CategoryAction">
+            <result name="openView">/page/product/category_save.jsp</result>
             <result name="success">/page/product/category_management.jsp</result>
         </action>
+
         <action name="product_management" class="org.msdai.eerigo.system.web.action.ProductManageAction">
             <result name="success">/page/product/product_management.jsp</result>
         </action>
-        <action name="country_management" class="org.msdai.eerigo.system.web.action.CountryManageAction">
-            <result name="success">/page/product/country_management.jsp</result>
+        <action name="product" class="org.msdai.eerigo.system.web.action.ProductAction">
+            <result name="openView">/page/product/product_save.jsp</result>
+            <result name="success">/page/product/product_management.jsp</result>
         </action>
-        <action name="country_opt" class="org.msdai.eerigo.system.web.action.CountryAction">
-            <result name="optCountryView">/page/product/country_save.jsp</result>
-            <result name="success">/page/product/country_management.jsp</result>
-        </action>
+
     </package>
 </struts>

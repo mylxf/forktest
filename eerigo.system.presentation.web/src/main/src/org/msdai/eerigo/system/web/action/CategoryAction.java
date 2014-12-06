@@ -5,6 +5,7 @@ import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
 import org.msdai.eerigo.system.servicefacade.action.CategoryServiceFacade;
 import org.msdai.eerigo.system.web.model.CategoryModel;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 public class CategoryAction extends BasePageAction {
     private CategoryServiceFacade categoryServiceFacade = new CategoryServiceFacade();
 
-    private CategoryModel model;
+    private CategoryModel model = new CategoryModel();
 
     public CategoryModel getModel() {
         return this.model;
@@ -23,32 +24,39 @@ public class CategoryAction extends BasePageAction {
 
     @Override
     public String doExecute() throws Exception {
-        String id = request.getParameter("id");
-        if (id != null && id != "") {
-            CategoryDTO category = categoryServiceFacade.getCategory(id);
+        return SUCCESS;
+    }
 
-            if (category != null) {
-                model = ConvertUtils.convert(category, CategoryModel.class);
-            }
-            method = "modifyCategory";
-        } else {
-            method = "addCategory";
+    public String openView() throws Exception {
+        String id = request.getParameter("id");
+        if (!StringUtils.isEmpty(id)) {
+            CategoryDTO country = categoryServiceFacade.getCategory(id);
+            model = ConvertUtils.convert(country, CategoryModel.class);
         }
 
-        return "optCategoryView";
+        return "openView";
     }
 
-    public String addCategory() throws Exception {
+    public String saveCategory() throws Exception{
         CategoryDTO categoryDTO = new CategoryDTO();
-        categoryDTO.setCategoryName(request.getParameter("model.categoryName"));
-        return (categoryServiceFacade.addCategory(categoryDTO).getResult()) ? SUCCESS : ERROR;
+        categoryDTO.setId(model.getId());
+        categoryDTO.setCategoryName(model.getCategoryName());
+        try {
+            if (StringUtils.isEmpty(categoryDTO.getId())) {
+                categoryServiceFacade.addCategory(categoryDTO);
+            } else {
+                categoryServiceFacade.modifyCategory(categoryDTO);
+            }
+            setAlertMsg("类别保存成功");
+        } catch (Exception e) {
+            setAlertMsg("类别保存失败");
+        }
+        return SHOWALERT;
     }
 
-    public String modifyCategory() throws Exception {
-        CategoryDTO categoryDTO = new CategoryDTO();
-        categoryDTO.setId(request.getParameter("model.id"));
-        categoryDTO.setCategoryName(request.getParameter("model.categoryName"));
-        return (categoryServiceFacade.modifyCategory(categoryDTO).getResult()) ? SUCCESS : ERROR;
+    public String deleteCategory() throws Exception {
+        String id = request.getParameter("id");
+        return (categoryServiceFacade.removeCategory(id).getResult()) ? SUCCESS : ERROR;
     }
 
     public String batchDelCategory() throws Exception {

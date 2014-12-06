@@ -62,8 +62,7 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public OperatorResult removeBrand(String brandId) {
         try {
-            BrandDTO brandDTO = getBrand(brandId);
-            Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
+            Brand brand = brandDomainService.getBrand(brandId);
             if (!productDomainService.existProducts(brand)) {
                 brandDomainService.removeBrand(brand);
             }

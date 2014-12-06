@@ -7,11 +7,11 @@ function batchDelCountry() {
     $(arrChk).each(function () {
         idlist += this.id.substring(4) + "|";
     });
-    alert(idlist);
+    //alert(idlist);
 
     if(idlist!=""){
         $.ajax({
-            url: "/country_opt.action?method=batchDelCountry",
+            url: "/country.action?method=batchDelCountry",
             type: 'POST',
             async:false,
             data: "id_list="+idlist,
@@ -22,4 +22,34 @@ function batchDelCountry() {
             }
         });
     }
+}
+
+function f_country_save_submit() {
+    var message = "";
+    if (newTrim($("#countryName").val()) == "") {
+        message += "请输入产地名称!\n";
+    }
+
+    if (message != "") {
+        alert(message);
+    } else {
+        $("#f_common_submit").ajaxSubmit(function (data) {
+            $("#close").click();
+            location.reload()
+        });
+    }
+}
+
+function f_country_delete(id) {
+    $.ajax({
+        url: "/country.action?method=deleteCountry",
+        data: "id=" + id,
+        type: 'POST',
+        async:false,
+        dataType: 'html',
+        error: function(){alert('Error');},
+        success: function (result) {
+            window.location.reload();
+        }
+    });
 }

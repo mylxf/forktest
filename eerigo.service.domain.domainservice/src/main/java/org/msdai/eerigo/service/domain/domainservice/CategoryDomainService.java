@@ -19,8 +19,8 @@ public class CategoryDomainService {
         this.categoryRepository = categoryRepository;
     }
 
-    public Category getCategory(String uuid) {
-        return categoryRepository.find(uuid);
+    public Category getCategory(String id) {
+        return categoryRepository.find(id.replace("\"",""));
     }
 
     public List<Category> getCategories() {

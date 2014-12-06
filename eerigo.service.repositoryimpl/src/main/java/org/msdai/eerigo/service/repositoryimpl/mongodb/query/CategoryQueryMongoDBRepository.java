@@ -8,6 +8,9 @@ import org.msdai.eerigo.service.repositoryimpl.MongoDBQueryRepository;
 import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
 import org.msdai.eerigo.service.serviceinterface.message.CategoryQueryRequestMessage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by fengfeng on 14/11/15.
  */
@@ -34,19 +37,20 @@ public class CategoryQueryMongoDBRepository extends MongoDBQueryRepository imple
     public PagedResult<CategoryDTO> queryCategories(CategoryQueryRequestMessage categoryQueryRequestMessage) {
         int index = categoryQueryRequestMessage.getIndex();
         int size = categoryQueryRequestMessage.getSize();
-        PagedResult<CategoryDTO> result = new PagedResult<CategoryDTO>();
+        List<CategoryDTO> list = new ArrayList<CategoryDTO>();
+
         QueryBuilder queryBuilder = QueryBuilder.start();
         DBObject query = queryBuilder.get();
-        long count = categoryCollection.count(query);
+        int count = (int)categoryCollection.count(query);
+        int totalPage = (count%size == 0) ? count/size : count/size + 1;
         if (count > 0) {
             DBCursor cursor = categoryCollection.find(query).skip(index * size).limit(size);
             while (cursor.hasNext()) {
-                result.add(transferCategoryDTO(cursor.next()));
+                list.add(transferCategoryDTO(cursor.next()));
             }
         }
-        result.setTotalPages((int)count);
 
-        return result;
+        return new PagedResult<CategoryDTO>(count, totalPage, size, index, list);
     }
 
     private CategoryDTO transferCategoryDTO(DBObject object) {

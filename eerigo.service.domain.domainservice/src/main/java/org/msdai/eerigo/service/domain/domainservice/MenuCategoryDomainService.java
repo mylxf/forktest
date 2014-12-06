@@ -18,7 +18,7 @@ public class MenuCategoryDomainService {
     }
 
     public MenuCategory getMenuCountry(String id) {
-        return menuCategoryRepository.find(id);
+        return menuCategoryRepository.find(id.replace("\"",""));
     }
 
     public List<MenuCategory> getMenuCountries() {

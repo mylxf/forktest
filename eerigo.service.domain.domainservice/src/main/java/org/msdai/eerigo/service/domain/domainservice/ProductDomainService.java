@@ -30,7 +30,7 @@ public class ProductDomainService {
     }
 
     public Product getProduct(String id) {
-        return productRepository.find(id);
+        return productRepository.find(id.replace("\"",""));
     }
 
     public List<Product> getProducts() {

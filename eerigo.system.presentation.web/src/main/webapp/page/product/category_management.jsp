@@ -15,11 +15,11 @@
         <div class="col-md-9">
             <!--正文-->
             <div class="bar-mod clearfix tl">
-                <input type="text" class="form-control dib" placeholder="Search">
-                <button type="submit" class="btn btn-default">搜索</button>
-                <a href="${pageContext.request.contextPath}/page/product/category_opt.action" class="btn btn-success" target="_blank"><span
+                <!--<input type="text" class="form-control dib" placeholder="Search">
+                <button type="submit" class="btn btn-default">搜索</button>-->
+                <a href="#" class="btn btn-success" onclick="open_view('category.action?method=openView');"><span
                         class="glyphicon glyphicon-plus"></span> 添加</a>
-                <a href="#" onclick="javascript:batchDelCategory();" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
+                <a href="#" onclick="batchDelCategory();" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
             </div>
             <table class="table table-striped table-condensed">
                 <thead>
@@ -37,7 +37,10 @@
                             <td><s:property value="id"/></td>
                             <td><s:property value="categoryName"/></td>
                             <td>
-                                <button id="btnEdit_<s:property value="id"/>" onclick="openwin('${pageContext.request.contextPath}/page/product/category_opt.action?id=<s:property value="id"/>');" type="button" class="btn btn-success btn-xs">编辑</button>
+                                <button type="button" class="btn btn-danger btn-xs"
+                                        onclick="f_category_delete('<s:property value='id'/>')";>删除
+                                </button>
+                                <button id="btnEdit_<s:property value="id"/>" onclick="open_view('category.action?method=openView&id=<s:property value="id"/>');" type="button" class="btn btn-success btn-xs">编辑</button>
                             </td>
                         </tr>
                     </s:iterator>
@@ -47,23 +50,22 @@
                 <s:url id="firstPage" action='category_management'>
                     <s:param name='index'>1</s:param>
                 </s:url>
-                <s:a href="%{firstPage}" class="">首页</s:a>
+                <li><s:a href="%{firstPage}" class="">首页</s:a></li>
 
                 <s:url id="prePage" action='category_management'>
                     <s:param name='index'><s:property value='preIndex'/></s:param>
                 </s:url>
-                <s:a href="%{prePage}" class="">上一页</s:a>
-                <a href="" class="">1</a> <span>跳转到<input type="" class="yem" value=""/>页</span>
+                <li><s:a href="%{prePage}" class="">上一页</s:a></li>
 
                 <s:url id="nextPage" action='category_management'>
                     <s:param name='index'><s:property value='nextIndex'/></s:param>
                 </s:url>
-                <s:a href="%{nextPage}" class="">下一页</s:a>
+                <li><s:a href="%{nextPage}" class="">下一页</s:a></li>
 
                 <s:url id="lastPage" action='category_management'>
                     <s:param name='index'><s:property value='lastIndex'/></s:param>
                 </s:url>
-                <s:a href="%{lastPage}" class="">尾页</s:a>
+                <li><s:a href="%{lastPage}" class="">尾页</s:a></li>
 
                 <!--<li class="disabled"><a href="#">«</a></li>
                 <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>

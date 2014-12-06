@@ -16,12 +16,37 @@ function f_brand_save_submit() {
 
 function f_brand_delete(id) {
     $.ajax({
-        url: "brand.action?method=deleteBrand",
-        data: {'id': id},
-        type: 'post',
-        dataType: 'json',
+        url: "/brand.action?method=deleteBrand",
+        data: "id=" + id,
+        type: 'POST',
+        async:false,
+        dataType: 'html',
+        error: function(){alert('Error');},
         success: function (result) {
-            location.reload();
+            window.location.reload();
         }
     });
+}
+
+function batchDelBrand() {
+    var idlist = "";
+    var arrChk = $("input[name='chk_id']:checked");
+    $(arrChk).each(function () {
+        idlist += this.id.substring(4) + "|";
+    });
+    //alert(idlist);
+
+    if(idlist!=""){
+        $.ajax({
+            url: "/brand.action?method=batchDelBrand",
+            type: 'POST',
+            async:false,
+            data: "id_list="+idlist,
+            dataType: 'html',
+            error: function(){alert('Error');},
+            success: function(result){
+                window.location.reload();
+            }
+        });
+    }
 }
