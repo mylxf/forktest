@@ -1,5 +1,6 @@
 package org.msdai.eerigo.core;
 
+import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -15,10 +16,10 @@ public class PagedResult<T> implements Collection<T>, Iterable<T> {
 
     public static final PagedResult EMPTY = new PagedResult();
 
-    private Integer totalRecords;
-    private Integer totalPages;
-    private Integer pageSize;
-    private Integer pageIndex;
+    private Integer totalRecords = 0;
+    private Integer totalPages = 0;
+    private Integer pageSize = 0;
+    private Integer pageIndex = 0;
     private List<T> data;
 
     public int getTotalRecords() {
@@ -28,7 +29,6 @@ public class PagedResult<T> implements Collection<T>, Iterable<T> {
     public int getTotalPages() {
         return totalPages;
     }
-    public void setTotalPages(int totalPages){this.totalPages = totalPages;}
 
     public int getPageSize() {
         return pageSize;
