@@ -2,6 +2,7 @@ package org.msdai.eerigo.system.servicefacade.action;
 
 import org.msdai.eerigo.core.OperatorResult;
 
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.service.RestClient;
 
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
@@ -18,24 +19,24 @@ import java.util.List;
  * Time: 0:51
  */
 public class BrandServiceFacade {
-    public void addBrand(BrandDTO brandDTO) throws EerigoRestClientException {
+    public OperatorResult addBrand(BrandDTO brandDTO) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/brand");
-        OperatorResult operatorResult = restClient.post("/addBrand", brandDTO, OperatorResult.class);
+        return restClient.post("/addBrand", brandDTO, OperatorResult.class);
     }
 
-    public void modifyBrand(BrandDTO brandDTO) throws EerigoRestClientException {
+    public OperatorResult modifyBrand(BrandDTO brandDTO) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/brand");
-        OperatorResult operatorResult = restClient.post("/modifyBrand", brandDTO, OperatorResult.class);
+        return restClient.post("/modifyBrand", brandDTO, OperatorResult.class);
     }
 
-    public void removeBrand(String brandId) throws EerigoRestClientException {
+    public OperatorResult removeBrand(String brandId) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/brand");
-        OperatorResult operatorResult = restClient.post("/removeBrand", brandId, OperatorResult.class);
+        return restClient.post("/removeBrand", brandId, OperatorResult.class);
     }
 
-    public void batchRemoveBrand(List<String> list) throws EerigoRestClientException {
+    public OperatorResult batchRemoveBrand(List<String> list) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/brand");
-        OperatorResult operatorResult = restClient.post("/batchRemoveBrand", list, OperatorResult.class);
+        return restClient.post("/batchRemoveBrand", list, OperatorResult.class);
     }
 
     public BrandDTO getBrand(String brandId) throws EerigoRestClientException {
@@ -43,8 +44,8 @@ public class BrandServiceFacade {
         return restClient.get("/getBrand", new Object[]{brandId}, BrandDTO.class);
     }
 
-    public BrandCollectionDTO getBrands() throws EerigoRestClientException {
+    public PagedResult getBrands() throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/brand");
-        return restClient.get("/getBrands", new Object[]{}, BrandCollectionDTO.class);
+        return restClient.get("/getBrands", new Object[]{}, PagedResult.class);
     }
 }

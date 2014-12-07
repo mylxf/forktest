@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>商品管理</title>
+    <script src="${pageContext.request.contextPath}/js/product/product.js"></script>
 </head>
 <body>
 <jsp:include page="/page/header.jsp"/>
@@ -13,64 +14,46 @@
         <div class="col-md-9">
             <!--正文-->
             <div class="bar-mod clearfix tl">
-                <input type="text" class="form-control dib" placeholder="Search">
-                <button type="submit" class="btn btn-default">搜索</button>
-                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal"><span
+                <!--<input type="text" class="form-control dib" placeholder="Search">
+                <button type="submit" class="btn btn-default">搜索</button>-->
+                <a href="#" class="btn btn-success" onclick="open_view('product.action?method=openView');"><span
                         class="glyphicon glyphicon-plus"></span> 添加</a>
-                <a href="#" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
+                <a href="#" onclick="batchDelProduct();" class="btn btn-danger"><span class="glyphicon"></span>全部删除</a>
             </div>
             <table class="table table-striped table-condensed">
                 <thead>
                 <tr>
-                    <th><input type="checkbox"/></th>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th><input type="checkbox" onclick="selectAll(this);"/></th>
+                    <th>商品名称</th>
+                    <th>类别</th>
+                    <th>品牌</th>
+                    <th>产地</th>
+                    <th>成本价</th>
+                    <th>销售价</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th><input type="checkbox"/></th>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-danger btn-xs">Danger</button>
-                            <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">删除</a></li>
-                                <li><a href="#">编辑</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">自定义</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th><input type="checkbox"/></th>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th><input type="checkbox"/></th>
-                    <td>3</td>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-xs">删除</button>
-                        <button type="button" class="btn btn-success btn-xs">编辑</button>
-                    </td>
-                </tr>
+                    <s:iterator value="models" status="index">
+                        <tr>
+                            <th><input id="chk_<s:property value="id"/>" type="checkbox" name="chk_id" /></th>
+                            <td><s:property value="productName"/></td>
+                            <td><s:property value="productCategory.categoryName"/></td>
+                            <td><s:property value="productBrand.brandName"/></td>
+                            <td><s:property value="origin.countryName"/></td>
+                            <td><s:property value="costPrice"/></td>
+                            <td><s:property value="sellPrice"/></td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-xs"
+                                        onclick="f_product_delete('<s:property value='id'/>');">删除
+                                </button>
+                                <input id="btnEdit_<s:property value="id"/>" type="button" class="btn btn-success btn-xs" onclick="open_view('product.action?method=openView&id=<s:property value="id"/>');" value="编辑"/>
+                            </td>
+                        </tr>
+                    </s:iterator>
                 </tbody>
             </table>
-            <ul class="pagination">
+            <!--<ul class="pagination">
                 <li class="disabled"><a href="#">«</a></li>
                 <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">2</a></li>
@@ -78,7 +61,7 @@
                 <li><a href="#">4</a></li>
                 <li><a href="#">5</a></li>
                 <li><a href="#">»</a></li>
-            </ul>
+            </ul>-->
             <!--正文 end-->
         </div>
     </div>
@@ -86,22 +69,6 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
 </div>
 </body>
 </html>

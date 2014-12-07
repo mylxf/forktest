@@ -51,14 +51,6 @@
             <ref bean="jaxbProvider"/>
         </jaxrs:providers>
     </jaxrs:server>
-    <jaxrs:server id="product" address="/menuCategory">
-        <jaxrs:serviceBeans>
-            <ref bean="productService"/>
-        </jaxrs:serviceBeans>
-        <jaxrs:providers>
-            <ref bean="jaxbProvider"/>
-        </jaxrs:providers>
-    </jaxrs:server>
     <jaxrs:server id="brandQuery" address="/brandQuery">
         <jaxrs:serviceBeans>
             <ref bean="brandQueryService"/>
@@ -106,6 +98,9 @@
 
     <bean id="productService" class="org.msdai.eerigo.service.serviceimpl.action.ProductServiceImpl">
         <property name="productDomainService" ref="productDomainService"/>
+        <property name="categoryDomainService" ref="categoryDomainService"/>
+        <property name="brandDomainService" ref="brandDomainService"/>
+        <property name="countryDomainService" ref="countryDomainService"/>
     </bean>
 
     <bean id="categoryQueryService" class="org.msdai.eerigo.service.serviceimpl.query.CategoryQueryServiceImpl">
@@ -117,8 +112,10 @@
     </bean>
 
     <bean id="productQueryService" class="org.msdai.eerigo.service.serviceimpl.query.ProductQueryServiceImpl">
-
-        <constructor-arg ref="productQueryRepository"/>
+        <constructor-arg index="0" name="productQueryRepository" ref="productQueryRepository"/>
+        <constructor-arg index="1" name="categoryService" ref="categoryService"/>
+        <constructor-arg index="2" name="brandService" ref="brandService"/>
+        <constructor-arg index="3" name="countryService" ref="countryService"/>
     </bean>
 
     <bean id="requestInterceptor" class="org.msdai.eerigo.core.service.ServiceRequestInterceptor"/>

@@ -38,7 +38,7 @@
                             <td><s:property value="categoryName"/></td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-xs"
-                                        onclick="f_category_delete('<s:property value='id'/>')";>删除
+                                        onclick="f_category_delete('<s:property value='id'/>');">删除
                                 </button>
                                 <button id="btnEdit_<s:property value="id"/>" onclick="open_view('category.action?method=openView&id=<s:property value="id"/>');" type="button" class="btn btn-success btn-xs">编辑</button>
                             </td>

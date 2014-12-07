@@ -40,7 +40,7 @@ public class CategoryServiceFacade {
         return restClient.post("/getCategory", id, CategoryDTO.class);
     }
 
-    public PagedResult<CategoryDTO> getCategories() throws EerigoRestClientException {
+    public PagedResult getCategories() throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/category");
         return restClient.post("/getCategories", null, PagedResult.class);
     }

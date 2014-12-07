@@ -10,8 +10,11 @@ import java.util.List;
 public class ProductDTO extends BaseDTO {
     private String id;
     private String productName;
+    private String productCategoryId;
     private CategoryDTO productCategory;
+    private String productBrandId;
     private BrandDTO productBrand;
+    private String countryId;
     private CountryDTO origin;
     private String productDesc;
     private List<ResourceDTO> productImages;
@@ -38,20 +41,44 @@ public class ProductDTO extends BaseDTO {
         this.productName = productName;
     }
 
+    public String getProductCategoryId() {
+        return productCategoryId;
+    }
+
+    public void setProductCategoryId(String categoryId) {
+        productCategoryId = categoryId;
+    }
+
     public CategoryDTO getProductCategory() {
         return productCategory;
     }
 
-    public void setProductCategory(CategoryDTO productCategory) {
-        this.productCategory = productCategory;
+    public void setProductCategory(CategoryDTO category) {
+        this.productCategory = category;
+    }
+
+    public String getProductBrandId() {
+        return productBrandId;
+    }
+
+    public void setProductBrandId(String brandId) {
+        productBrandId = brandId;
     }
 
     public BrandDTO getProductBrand() {
         return productBrand;
     }
 
-    public void setProductBrand(BrandDTO productBrand) {
-        this.productBrand = productBrand;
+    public void setProductBrand(BrandDTO brand) {
+        this.productBrand = brand;
+    }
+
+    public String getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(String countryId) {
+        this.countryId = countryId;
     }
 
     public CountryDTO getOrigin() {

@@ -1,7 +1,3 @@
-function openwin(url) {
-    window.open(url,'newwindow');
-}
-
 function selectAll(checkbox) {
     //$('input[type=checkbox]').attr('checked', $(checkbox).attr('checked'));
     var chkvalue = $(checkbox)[0].checked;

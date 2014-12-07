@@ -1,13 +1,11 @@
 package org.msdai.eerigo.service.serviceinterface.servicecontract.action;
 
-import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.BrandCollectionDTO;
-
 import org.msdai.eerigo.core.OperatorResult;
+import org.msdai.eerigo.core.PagedResult;
+import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-
 import java.util.List;
 
 /**
@@ -41,5 +39,5 @@ public interface BrandService {
 
     @GET
     @Path("/getBrands")
-    BrandCollectionDTO getBrands();
+    PagedResult<BrandDTO> getBrands();
 }

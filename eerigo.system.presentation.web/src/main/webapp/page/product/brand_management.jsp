@@ -38,7 +38,7 @@
                             <td><s:property value='brandLogo'/></td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-xs"
-                                        onclick="f_brand_delete('<s:property value='id'/>')";>删除
+                                        onclick="f_brand_delete('<s:property value='id'/>');">删除
                                 </button>
                                 <button type="button" class="btn btn-success btn-xs"
                                         onclick="open_view('brand.action?method=openView&id=<s:property value="id"/>')">

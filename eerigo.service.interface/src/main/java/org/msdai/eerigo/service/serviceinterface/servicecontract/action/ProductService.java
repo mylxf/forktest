@@ -1,5 +1,7 @@
 package org.msdai.eerigo.service.serviceinterface.servicecontract.action;
 
+import org.msdai.eerigo.core.OperatorResult;
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.service.serviceinterface.datacontract.ProductDTO;
 
 import javax.ws.rs.Consumes;
@@ -18,19 +20,19 @@ import java.util.List;
 public interface ProductService {
     @POST
     @Path("/addProduct")
-    void addProduct(ProductDTO productDTO);
+    OperatorResult addProduct(ProductDTO productDTO);
 
     @POST
     @Path("/modifyProduct")
-    void modifyProduct(ProductDTO productDTO);
+    OperatorResult modifyProduct(ProductDTO productDTO);
 
     @POST
     @Path("/removeProduct")
-    void removeProduct(String productId);
+    OperatorResult removeProduct(String productId);
 
     @POST
     @Path("/batchRemoveProduct")
-    void batchRemoveProduct(List<String> list);
+    OperatorResult batchRemoveProduct(List<String> list);
 
     @POST
     @Path("/getProduct")
@@ -38,5 +40,5 @@ public interface ProductService {
 
     @POST
     @Path("/getProducts")
-    List<ProductDTO> getProducts();
+    PagedResult<ProductDTO> getProducts();
 }

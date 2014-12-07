@@ -12,7 +12,7 @@ import org.msdai.eerigo.service.serviceinterface.message.ProductQueryRequestMess
  * Created by fengfeng on 14/11/15.
  */
 public class ProductQueryServiceFacade {
-    public PagedResult<ProductDTO> queryProducts(Integer index, Integer size) throws EerigoRestClientException {
+    public PagedResult queryProducts(Integer index, Integer size) throws EerigoRestClientException {
         RestClient restClient = new RestClient("http://localhost:8081/eerigo.service/productQuery");
         ProductQueryRequestMessage request = new ProductQueryRequestMessage();
         request.setIndex(index);

@@ -7,7 +7,7 @@
                 <li><a href="${pageContext.request.contextPath}/page/product/category_management">类别管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/page/product/brand_management.action">品牌管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/page/product/country_management">产地管理</a></li>
-                <li><a href="${pageContext.request.contextPath}/page/product/product_management.jsp">商品管理</a></li>
+                <li><a href="${pageContext.request.contextPath}/page/product/product_management">商品管理</a></li>
             </ul>
         </li>
         <li id="menu_order" role="presentation">

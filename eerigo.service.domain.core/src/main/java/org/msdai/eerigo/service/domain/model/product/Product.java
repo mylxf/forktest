@@ -25,17 +25,17 @@ public class Product extends AggregateRootBase {
     /**
      * 商品所属类别
      */
-    private Category productCategory;
+    private String productCategoryId;
 
     /**
      * 商品所属品牌
      */
-    private Brand productBrand;
+    private String productBrandId;
 
     /**
      * 商品原产地
      */
-    private Country origin;
+    private String countryId;
 
     /**
      * 商品描述
@@ -85,28 +85,28 @@ public class Product extends AggregateRootBase {
         this.productName = productName;
     }
 
-    public Category getProductCategory() {
-        return productCategory;
+    public String getProductCategoryId() {
+        return productCategoryId;
     }
 
-    public void setProductCategory(Category productCategory) {
-        this.productCategory = productCategory;
+    public void setProductCategoryId(String categoryId) {
+        productCategoryId = categoryId;
     }
 
-    public Brand getProductBrand() {
-        return productBrand;
+    public String getProductBrandId() {
+        return productBrandId;
     }
 
-    public void setProductBrand(Brand productBrand) {
-        this.productBrand = productBrand;
+    public void setProductBrandId(String brandId) {
+        productBrandId = brandId;
     }
 
-    public Country getOrigin() {
-        return origin;
+    public String getCountryId() {
+        return countryId;
     }
 
-    public void setOrigin(Country origin) {
-        this.origin = origin;
+    public void setCountryId(String countryId) {
+        this.countryId = countryId;
     }
 
     public String getProductDesc() {

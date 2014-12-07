@@ -1,18 +1,16 @@
 package org.msdai.eerigo.service.serviceimpl.action;
 
+import org.apache.log4j.Logger;
 import org.msdai.eerigo.core.OperatorResult;
+import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.domain.domainservice.BrandDomainService;
 import org.msdai.eerigo.service.domain.domainservice.ProductDomainService;
 import org.msdai.eerigo.service.domain.model.brand.Brand;
-import org.msdai.eerigo.service.serviceinterface.datacontract.BrandCollectionDTO;
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
 import org.msdai.eerigo.service.serviceinterface.servicecontract.action.BrandService;
 
-import org.apache.log4j.Logger;
-
 import java.util.List;
-import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -96,14 +94,12 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public BrandCollectionDTO getBrands() {
-        List<BrandDTO> result = new ArrayList<BrandDTO>();
+    public PagedResult<BrandDTO> getBrands() {
+        PagedResult<BrandDTO> pagedResult = new PagedResult<BrandDTO>();
         List<Brand> list = brandDomainService.getBrands();
         for (Brand brand : list) {
-            result.add(ConvertUtils.convert(brand, BrandDTO.class));
+            pagedResult.add(ConvertUtils.convert(brand, BrandDTO.class));
         }
-        BrandCollectionDTO r = new BrandCollectionDTO();
-        r.setBrands(result);
-        return r;
+        return pagedResult;
     }
 }
