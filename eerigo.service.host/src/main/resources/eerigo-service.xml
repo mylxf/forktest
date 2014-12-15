@@ -94,6 +94,7 @@
     <bean id="brandService" class="org.msdai.eerigo.service.serviceimpl.action.BrandServiceImpl">
         <property name="brandDomainService" ref="brandDomainService"/>
         <property name="productDomainService" ref="productDomainService"/>
+        <property name="resourceDomainService" ref="resourceDomainService"/>
     </bean>
 
     <bean id="productService" class="org.msdai.eerigo.service.serviceimpl.action.ProductServiceImpl">
@@ -101,6 +102,7 @@
         <property name="categoryDomainService" ref="categoryDomainService"/>
         <property name="brandDomainService" ref="brandDomainService"/>
         <property name="countryDomainService" ref="countryDomainService"/>
+        <property name="resourceDomainService" ref="resourceDomainService"/>
     </bean>
 
     <bean id="categoryQueryService" class="org.msdai.eerigo.service.serviceimpl.query.CategoryQueryServiceImpl">

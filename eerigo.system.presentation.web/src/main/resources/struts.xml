@@ -42,6 +42,7 @@
         <action name="product" class="org.msdai.eerigo.system.web.action.ProductAction">
             <result name="openView">/page/product/product_save.jsp</result>
             <result name="success">/page/product/product_management.jsp</result>
+            <result name="openProperty">/page/product/productproperty_save.jsp</result>
         </action>
 
     </package>

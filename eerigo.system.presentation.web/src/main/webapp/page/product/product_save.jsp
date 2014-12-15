@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
-<s:form action="product.action?method=saveProduct" method="post" id="f_common_submit">
+<s:form action="product.action?method=saveProduct" method="post" id="f_common_submit" enctype="multipart/form-data">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -26,6 +26,10 @@
                 <div class="form-group">
                     <label>产地</label>
                     <s:select theme="simple" cssClass="form-control" list="countryModels" name="model.countryId" listKey="id" listValue="countryName" value="model.countryId"/>
+                </div>
+                <div class="form-group">
+                    <label>商品图片</label>
+                    <s:file name="file"></s:file>
                 </div>
                 <div class="form-group">
                     <label>描述</label>

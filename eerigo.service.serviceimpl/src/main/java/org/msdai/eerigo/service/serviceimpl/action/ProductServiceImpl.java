@@ -3,21 +3,17 @@ package org.msdai.eerigo.service.serviceimpl.action;
 import org.msdai.eerigo.core.OperatorResult;
 import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.utils.ConvertUtils;
-import org.msdai.eerigo.service.domain.domainservice.BrandDomainService;
-import org.msdai.eerigo.service.domain.domainservice.CategoryDomainService;
-import org.msdai.eerigo.service.domain.domainservice.CountryDomainService;
-import org.msdai.eerigo.service.domain.domainservice.ProductDomainService;
+import org.msdai.eerigo.service.domain.domainservice.*;
+import org.msdai.eerigo.service.domain.model.Resource;
 import org.msdai.eerigo.service.domain.model.brand.Brand;
 import org.msdai.eerigo.service.domain.model.category.Category;
 import org.msdai.eerigo.service.domain.model.country.Country;
 import org.msdai.eerigo.service.domain.model.product.Product;
-import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.CategoryDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.CountryDTO;
-import org.msdai.eerigo.service.serviceinterface.datacontract.ProductDTO;
+import org.msdai.eerigo.service.serviceinterface.datacontract.*;
 import org.msdai.eerigo.service.serviceinterface.servicecontract.action.ProductService;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,16 +24,17 @@ public class ProductServiceImpl implements ProductService {
     private CategoryDomainService categoryDomainService;
     private BrandDomainService brandDomainService;
     private CountryDomainService countryDomainService;
+    private ResourceDomainService resourceDomainService;
 
-    public void setCategoryDomainService(CategoryDomainService categoryDomainService){
+    public void setCategoryDomainService(CategoryDomainService categoryDomainService) {
         this.categoryDomainService = categoryDomainService;
     }
 
-    public void setBrandDomainService(BrandDomainService brandDomainService){
+    public void setBrandDomainService(BrandDomainService brandDomainService) {
         this.brandDomainService = brandDomainService;
     }
 
-    public void setCountryDomainService(CountryDomainService countryDomainService){
+    public void setCountryDomainService(CountryDomainService countryDomainService) {
         this.countryDomainService = countryDomainService;
     }
 
@@ -45,9 +42,14 @@ public class ProductServiceImpl implements ProductService {
         this.productDomainService = productDomainService;
     }
 
+    public void setResourceDomainService(ResourceDomainService resourceDomainService){
+        this.resourceDomainService = resourceDomainService;
+    }
+
     @Override
     public OperatorResult addProduct(ProductDTO productDTO) {
         Product product = transferProduct(productDTO);
+        product.setProductImages(saveResource(productDTO.getProductImages()));
         this.productDomainService.addProduct(product);
         return new OperatorResult(true);
     }
@@ -55,6 +57,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public OperatorResult modifyProduct(ProductDTO productDTO) {
         Product product = transferProduct(productDTO);
+        product.setProductImages(saveResource(productDTO.getProductImages()));
         this.productDomainService.modifyCProduct(product);
         return new OperatorResult(true);
     }
@@ -80,18 +83,18 @@ public class ProductServiceImpl implements ProductService {
         Product product = productDomainService.getProduct(id);
         ProductDTO productDTO = ConvertUtils.convert(product, ProductDTO.class);
 
-        if(productDTO!=null){
-            if(!StringUtils.isEmpty(productDTO.getProductCategoryId())){
+        if (productDTO != null) {
+            if (!StringUtils.isEmpty(productDTO.getProductCategoryId())) {
                 Category category = categoryDomainService.getCategory(productDTO.getProductCategoryId());
                 productDTO.setProductCategory(ConvertUtils.convert(category, CategoryDTO.class));
             }
 
-            if(!StringUtils.isEmpty(productDTO.getProductBrandId())){
+            if (!StringUtils.isEmpty(productDTO.getProductBrandId())) {
                 Brand brand = brandDomainService.getBrand(productDTO.getProductBrandId());
                 productDTO.setProductBrand(ConvertUtils.convert(brand, BrandDTO.class));
             }
 
-            if(!StringUtils.isEmpty(productDTO.getCountryId())){
+            if (!StringUtils.isEmpty(productDTO.getCountryId())) {
                 Country country = countryDomainService.getCountry(productDTO.getCountryId());
                 productDTO.setOrigin(ConvertUtils.convert(country, CountryDTO.class));
             }
@@ -128,5 +131,17 @@ public class ProductServiceImpl implements ProductService {
         product.setWeight(productDTO.getWeight());
 
         return product;
+    }
+
+    private List<Resource> saveResource(List<ResourceDTO> list){
+        List<Resource> listRes = new ArrayList<Resource>();
+
+        if (list != null && list.size() > 0) {
+            Resource resource = ConvertUtils.convert(list.get(0), Resource.class);
+            resourceDomainService.addResource(resource);
+            listRes.add(resource);
+        }
+
+        return listRes;
     }
 }

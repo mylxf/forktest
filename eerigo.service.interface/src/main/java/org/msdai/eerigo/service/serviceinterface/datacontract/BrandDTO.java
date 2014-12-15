@@ -8,6 +8,7 @@ import org.msdai.eerigo.core.service.BaseDTO;
 public class BrandDTO extends BaseDTO {
     private String id;
     private String brandName;
+    private ResourceDTO resource;
 
     public BrandDTO() {
     }
@@ -26,5 +27,13 @@ public class BrandDTO extends BaseDTO {
 
     public void setBrandName(String brandName) {
         this.brandName = brandName;
+    }
+
+    public ResourceDTO getResource() {
+        return this.resource;
+    }
+
+    public void setResource(ResourceDTO resource) {
+        this.resource = resource;
     }
 }

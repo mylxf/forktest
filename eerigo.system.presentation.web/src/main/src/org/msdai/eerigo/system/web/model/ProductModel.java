@@ -16,6 +16,7 @@ public class ProductModel {
     private Double costPrice;
     private Double sellPrice;
     private Double weight;
+    private ResourceModel picResource;
 
     public String getId() {
         return this.id;
@@ -111,5 +112,13 @@ public class ProductModel {
 
     public void setWeight(Double weight) {
         this.weight = weight;
+    }
+
+    public ResourceModel getPicResource() {
+        return picResource;
+    }
+
+    public void setPicResource(ResourceModel resource) {
+        this.picResource = resource;
     }
 }

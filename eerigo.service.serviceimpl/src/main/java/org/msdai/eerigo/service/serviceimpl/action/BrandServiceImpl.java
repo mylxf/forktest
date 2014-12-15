@@ -6,8 +6,11 @@ import org.msdai.eerigo.core.PagedResult;
 import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.domain.domainservice.BrandDomainService;
 import org.msdai.eerigo.service.domain.domainservice.ProductDomainService;
+import org.msdai.eerigo.service.domain.domainservice.ResourceDomainService;
+import org.msdai.eerigo.service.domain.model.Resource;
 import org.msdai.eerigo.service.domain.model.brand.Brand;
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
+import org.msdai.eerigo.service.serviceinterface.datacontract.ResourceDTO;
 import org.msdai.eerigo.service.serviceinterface.servicecontract.action.BrandService;
 
 import java.util.List;
@@ -24,6 +27,7 @@ public class BrandServiceImpl implements BrandService {
 
     private BrandDomainService brandDomainService;
     private ProductDomainService productDomainService;
+    private ResourceDomainService resourceDomainService;
 
     public void setBrandDomainService(BrandDomainService brandDomainService) {
         this.brandDomainService = brandDomainService;
@@ -33,10 +37,15 @@ public class BrandServiceImpl implements BrandService {
         this.productDomainService = productDomainService;
     }
 
+    public void setResourceDomainService(ResourceDomainService resourceDomainService) {
+        this.resourceDomainService = resourceDomainService;
+    }
+
     @Override
     public OperatorResult addBrand(BrandDTO brandDTO) {
         try {
             Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
+            brand.setBrandLogo(saveResource(brandDTO.getResource()));
             brandDomainService.addBrand(brand);
             return new OperatorResult(true);
         } catch (Exception e) {
@@ -49,6 +58,7 @@ public class BrandServiceImpl implements BrandService {
     public OperatorResult modifyBrand(BrandDTO brandDTO) {
         try {
             Brand brand = ConvertUtils.convert(brandDTO, Brand.class);
+            brand.setBrandLogo(saveResource(brandDTO.getResource()));
             brandDomainService.modifyBrand(brand);
             return new OperatorResult(true);
         } catch (Exception e) {
@@ -101,5 +111,15 @@ public class BrandServiceImpl implements BrandService {
             pagedResult.add(ConvertUtils.convert(brand, BrandDTO.class));
         }
         return pagedResult;
+    }
+
+    private Resource saveResource(ResourceDTO resourceDTO) {
+        if (resourceDTO != null) {
+            Resource resource = ConvertUtils.convert(resourceDTO, Resource.class);
+            resourceDomainService.addResource(resource);
+            return resource;
+        } else {
+            return null;
+        }
     }
 }

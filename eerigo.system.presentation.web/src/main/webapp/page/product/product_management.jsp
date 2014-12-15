@@ -47,7 +47,8 @@
                                 <button type="button" class="btn btn-danger btn-xs"
                                         onclick="f_product_delete('<s:property value='id'/>');">删除
                                 </button>
-                                <input id="btnEdit_<s:property value="id"/>" type="button" class="btn btn-success btn-xs" onclick="open_view('product.action?method=openView&id=<s:property value="id"/>');" value="编辑"/>
+                                <input id="btnEdit_<s:property value="id"/>" type="button" class="btn btn-success btn-xs" onclick="open_view('product.action?method=openView&id=<s:property value="id"/>');" value="编辑信息"/>
+                                <input id="btnEdit_<s:property value="id"/>" type="button" class="btn btn-success btn-xs" onclick="open_view('product.action?method=openProperty&id=<s:property value="id"/>');" value="编辑属性"/>
                             </td>
                         </tr>
                     </s:iterator>

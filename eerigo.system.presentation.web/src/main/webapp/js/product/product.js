@@ -56,3 +56,16 @@ function f_product_delete(id) {
         }
     });
 }
+
+function f_product_property_save_submit() {
+    var message = "";
+
+    if (message != "") {
+        alert(message);
+    } else {
+        $("#f_common_submit").ajaxSubmit(function (data) {
+            $("#close").click();
+            location.reload()
+        });
+    }
+}

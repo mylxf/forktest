@@ -1,11 +1,15 @@
 package org.msdai.eerigo.system.web.action;
 
+import org.apache.struts2.dispatcher.multipart.MultiPartRequestWrapper;
 import org.msdai.eerigo.core.BaseAction;
 import org.msdai.eerigo.service.serviceinterface.datacontract.BrandDTO;
+import org.msdai.eerigo.service.serviceinterface.datacontract.ResourceDTO;
 import org.msdai.eerigo.system.servicefacade.action.BrandServiceFacade;
 import org.msdai.eerigo.system.web.model.BrandModel;
 import org.springframework.util.StringUtils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +23,7 @@ public class BrandAction extends BaseAction {
     BrandServiceFacade brandServiceFacade = new BrandServiceFacade();
 
     private BrandModel model = new BrandModel();
+    private File file;
 
     public BrandModel getModel() {
         return model;
@@ -43,6 +48,18 @@ public class BrandAction extends BaseAction {
         BrandDTO brand = new BrandDTO();
         brand.setId(model.getId());
         brand.setBrandName(model.getBrandName());
+
+        if(((MultiPartRequestWrapper) request).getFiles("file")!=null) {
+            file = ((MultiPartRequestWrapper) request).getFiles("file")[0];
+
+            FileInputStream stream = new FileInputStream(file);
+            ResourceDTO resource = new ResourceDTO();
+            byte[] content = new byte[stream.available()];
+            stream.read(content);
+            resource.setResourceContent(content);
+            brand.setResource(resource);
+        }
+
         try {
             if (StringUtils.isEmpty(brand.getId())) {
                 brandServiceFacade.addBrand(brand);

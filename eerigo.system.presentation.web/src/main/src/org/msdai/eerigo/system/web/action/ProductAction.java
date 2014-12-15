@@ -1,8 +1,10 @@
 package org.msdai.eerigo.system.web.action;
 
+import org.apache.struts2.dispatcher.multipart.MultiPartRequestWrapper;
 import org.msdai.eerigo.core.BaseAction;
 import org.msdai.eerigo.core.utils.ConvertUtils;
 import org.msdai.eerigo.service.serviceinterface.datacontract.ProductDTO;
+import org.msdai.eerigo.service.serviceinterface.datacontract.ResourceDTO;
 import org.msdai.eerigo.system.servicefacade.action.BrandServiceFacade;
 import org.msdai.eerigo.system.servicefacade.action.CategoryServiceFacade;
 import org.msdai.eerigo.system.servicefacade.action.CountryServiceFacade;
@@ -13,6 +15,8 @@ import org.msdai.eerigo.system.web.model.CountryModel;
 import org.msdai.eerigo.system.web.model.ProductModel;
 import org.springframework.util.StringUtils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +33,7 @@ public class ProductAction extends BaseAction {
     private List<CountryModel> countryModels = new ArrayList<CountryModel>();
     private List<BrandModel> brandModels = new ArrayList<BrandModel>();
     private List<CategoryModel> categoryModels = new ArrayList<CategoryModel>();
+    private File file;
 
     public ProductModel getModel() {
         return model;
@@ -88,6 +93,19 @@ public class ProductAction extends BaseAction {
         productDTO.setCostPrice(model.getCostPrice());
         productDTO.setSellPrice(model.getSellPrice());
         productDTO.setWeight(model.getWeight());
+
+        if(((MultiPartRequestWrapper) request).getFiles("file")!=null) {
+            file = ((MultiPartRequestWrapper) request).getFiles("file")[0];
+
+            FileInputStream stream = new FileInputStream(file);
+            ResourceDTO resource = new ResourceDTO();
+            byte[] content = new byte[stream.available()];
+            stream.read(content);
+            resource.setResourceContent(content);
+            List<ResourceDTO> listRes = new ArrayList<ResourceDTO>();
+            listRes.add(resource);
+            productDTO.setProductImages(listRes);
+        }
 
         try {
             if (StringUtils.isEmpty(productDTO.getId())) {
