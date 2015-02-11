@@ -23,7 +23,7 @@
         <module>eerigo.website.presentation.servicefacade</module>
         <module>eerigo.website.presentation.web</module>
     </modules>
-
+<!-- afforsky test -->
     <dependencies>
 
     </dependencies>
